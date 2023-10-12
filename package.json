@@ -30,7 +30,7 @@
     "build:styles": "postcss ./src/index.css -o ./dist/style.css",
     "dev": "vite",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "publish": "./scripts/publish.sh",
+    "prepublish": "npm test && npm run build && npm version patch -m 'Bump to %s'",
     "storybook": "storybook dev -p 6006",
     "test": ""
   },
