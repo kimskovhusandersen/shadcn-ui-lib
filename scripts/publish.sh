@@ -6,4 +6,4 @@ npm run build
 npm version patch
 
 # Publish the package
-# npm publish --access public
+npm publish --access public
