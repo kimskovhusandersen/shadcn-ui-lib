@@ -21,7 +21,7 @@ export default function App() {
 
   return (
     <div
-      className={`flex align-center justify-start ${mode} flex-col h-[100vh]`}
+      className={`align-center flex justify-start ${mode} h-[100vh] flex-col`}
     >
       <h1 className="text-3xl font-bold underline">Component Library</h1>
       <div className="py-4">
