@@ -1,31 +1,36 @@
 {
-  "name": "shadcn-ui-library-starter",
-  "description": "A quick library starter for React with Tailwind CSS, Vite, TypeScript and Shadcn-ui components.",
-  "private": false,
+  "name": "shadcn-ui-library",
   "version": "1.0.3",
+  "private": false,
+  "description": "A UI library for React with Tailwind CSS, Vite, TypeScript and Shadcn-ui components.",
+  "homepage": "https://github.com/kimskovhusandersen/shadcn-ui-lib#readme",
+  "bugs": {
+    "url": "https://github.com/kimskovhusandersen/shadcn-ui-lib/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kimskovhusandersen/shadcn-ui-lib.git"
+  },
+  "license": "MIT",
+  "author": "Kim Skovhus Andersen",
+  "sideEffects": false,
   "type": "module",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
   "types": "dist/index.d.ts",
-  "sideEffects": false,
+  "directories": {
+    "example": "examples"
+  },
   "files": [
     "dist"
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/rajeshdavidbabu/shadcn-ui-lib-starter.git"
-  },
   "scripts": {
-    "dev": "vite",
     "build": "tsc && vite build && npm run build:styles",
+    "build-storybook": "storybook build",
     "build:styles": "postcss ./src/index.css -o ./dist/style.css",
+    "dev": "vite",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
-  },
-  "peerDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "storybook": "storybook dev -p 6006"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.0.3",
@@ -67,5 +72,9 @@
     "typescript": "^5.0.2",
     "vite": "^4.3.2",
     "vite-plugin-dts": "^2.3.0"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }
