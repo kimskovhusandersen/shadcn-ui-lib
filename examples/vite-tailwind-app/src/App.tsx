@@ -1,5 +1,5 @@
 import "./App.css";
-import "shadcn-ui-library-starter/dist/style.css";
+import "@kimskovhusandersen/shadcn-ui-library/dist/style.css";
 import {
   Button,
   Avatar,
@@ -8,7 +8,7 @@ import {
   Alert,
   AlertDescription,
   AlertTitle,
-} from "shadcn-ui-library-starter";
+} from "@kimskovhusandersen/shadcn-ui-library";
 import { Terminal } from "lucide-react";
 import { useState } from "react";
 
