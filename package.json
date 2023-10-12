@@ -1,6 +1,6 @@
 {
   "name": "@kimskovhusandersen/shadcn-ui-library",
-  "version": "1.0.5",
+  "version": "1.0.4",
   "private": false,
   "description": "A UI library for React with Tailwind CSS, Vite, TypeScript and Shadcn-ui components.",
   "homepage": "https://github.com/kimskovhusandersen/shadcn-ui-lib#readme",
@@ -30,9 +30,8 @@
     "build:styles": "postcss ./src/index.css -o ./dist/style.css",
     "dev": "vite",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "storybook": "storybook dev -p 6006",
-    "prepublish": "npm run build",
-    "publish": "npm publish --access public"
+    "publish": "./scripts/publish.sh",
+    "storybook": "storybook dev -p 6006"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.0.3",
