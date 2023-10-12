@@ -1,5 +1,5 @@
 {
-  "name": "shadcn-ui-library",
+  "name": "@kimskovhusandersen/shadcn-ui-library",
   "version": "1.0.3",
   "private": false,
   "description": "A UI library for React with Tailwind CSS, Vite, TypeScript and Shadcn-ui components.",
