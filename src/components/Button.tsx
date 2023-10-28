@@ -10,7 +10,6 @@ const button = cva(
     "focus-visible:ring-2",
     "focus-visible:ring-offset-2",
     "font-md",
-    "hover:opacity-90",
     "inline-flex",
     "items-center",
     "justify-center",
