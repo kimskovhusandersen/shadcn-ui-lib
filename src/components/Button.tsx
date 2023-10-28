@@ -26,7 +26,7 @@ const button = cva(
         outlined: [],
         text: ["border-transparent"],
       },
-      color: {
+      intent: {
         primary: [],
         secondary: [],
       },
@@ -37,17 +37,17 @@ const button = cva(
     },
     compoundVariants: [
       {
-        color: "primary",
+        intent: "primary",
         variant: "contained",
         class: ["bg-primary-500", "text-white", "hover:bg-primary-600"],
       },
       {
-        color: "secondary",
+        intent: "secondary",
         variant: "contained",
         class: ["bg-secondary-500", "text-white", "hover:bg-secondary-600"],
       },
       {
-        color: "primary",
+        intent: "primary",
         variant: "text",
         class: [
           "text-primary-500",
@@ -57,7 +57,7 @@ const button = cva(
         ],
       },
       {
-        color: "secondary",
+        intent: "secondary",
         variant: "text",
         class: [
           "text-secondary-500",
@@ -67,7 +67,7 @@ const button = cva(
         ],
       },
       {
-        color: "primary",
+        intent: "primary",
         variant: "outlined",
         class: [
           "text-primary-500",
@@ -78,7 +78,7 @@ const button = cva(
         ],
       },
       {
-        color: "secondary",
+        intent: "secondary",
         variant: "outlined",
         class: [
           "text-secondary-500",
@@ -91,7 +91,7 @@ const button = cva(
     ],
     defaultVariants: {
       variant: "contained",
-      color: "primary",
+      intent: "primary",
       size: "md",
     },
   },
@@ -103,10 +103,10 @@ export interface ButtonProps
 
 export const Button: React.FC<ButtonProps> = ({
   className,
-  color,
+  intent,
   size,
   variant,
   ...props
 }) => (
-  <button className={button({ variant, color, size, className })} {...props} />
+  <button className={button({ variant, intent, size, className })} {...props} />
 );
