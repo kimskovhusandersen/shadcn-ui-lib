@@ -7,3 +7,4 @@ tailwindFunctions:
   - clsx
   - cva
   - cn
+  - cls
