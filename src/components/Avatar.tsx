@@ -1,48 +1,25 @@
-import * as React from "react";
-import * as AvatarPrimitive from "@radix-ui/react-avatar";
+import * as ReactAvatar from "@radix-ui/react-avatar";
+import React, { PropsWithChildren } from "react";
 
-import { cn } from "../lib/utils";
+export type AvartarProps = PropsWithChildren<
+  Pick<ReactAvatar.AvatarImageProps, "alt" | "src">
+>;
 
-const Avatar = React.forwardRef<
-  React.ElementRef<typeof AvatarPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Root>
->(({ className, ...props }, ref) => (
-  <AvatarPrimitive.Root
-    ref={ref}
-    className={cn(
-      "relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full",
-      className,
-    )}
-    {...props}
-  />
-));
-Avatar.displayName = AvatarPrimitive.Root.displayName;
-
-const AvatarImage = React.forwardRef<
-  React.ElementRef<typeof AvatarPrimitive.Image>,
-  React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Image>
->(({ className, ...props }, ref) => (
-  <AvatarPrimitive.Image
-    ref={ref}
-    className={cn("aspect-square h-full w-full", className)}
-    {...props}
-  />
-));
-AvatarImage.displayName = AvatarPrimitive.Image.displayName;
-
-const AvatarFallback = React.forwardRef<
-  React.ElementRef<typeof AvatarPrimitive.Fallback>,
-  React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Fallback>
->(({ className, ...props }, ref) => (
-  <AvatarPrimitive.Fallback
-    ref={ref}
-    className={cn(
-      "flex h-full w-full items-center justify-center rounded-full bg-muted",
-      className,
-    )}
-    {...props}
-  />
-));
-AvatarFallback.displayName = AvatarPrimitive.Fallback.displayName;
-
-export { Avatar, AvatarImage, AvatarFallback };
+export function Avatar({ alt, src, children }: AvartarProps) {
+  return (
+    <ReactAvatar.Root className="inline-flex h-[45px] w-[45px] select-none items-center justify-center overflow-hidden rounded-[100%] bg-[color:var(--black-a3)] align-middle">
+      <ReactAvatar.Image
+        className="h-full w-full rounded-[inherit] object-cover"
+        src={src}
+        alt={alt}
+      />
+      <ReactAvatar.Fallback
+        className="flex h-full w-full items-center justify-center bg-[white] text-[15px] font-medium leading-none text-[color:var(--violet-11)]"
+        delayMs={600}
+      >
+        {children}
+      </ReactAvatar.Fallback>
+    </ReactAvatar.Root>
+  );
+}
+export default Avatar;

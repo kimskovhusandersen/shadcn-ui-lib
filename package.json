@@ -1,8 +1,8 @@
 {
-  "name": "@kimskovhusandersen/shadcn-ui-library",
+  "name": "@kimskovhusandersen/ui-library",
   "version": "1.0.14",
   "private": false,
-  "description": "A UI library for React with Tailwind CSS, Vite, TypeScript and Shadcn-ui components.",
+  "description": "A UI library for React with Tailwind CSS, Vite, TypeScript, RadixShadcn-ui components.",
   "homepage": "https://github.com/kimskovhusandersen/shadcn-ui-lib#readme",
   "bugs": {
     "url": "https://github.com/kimskovhusandersen/shadcn-ui-lib/issues"
@@ -35,7 +35,7 @@
     "test": ""
   },
   "dependencies": {
-    "@radix-ui/react-avatar": "^1.0.3",
+    "@radix-ui/react-avatar": "^1.0.4",
     "@radix-ui/react-slot": "^1.0.2",
     "class-variance-authority": "^0.6.0",
     "clsx": "^1.2.1",

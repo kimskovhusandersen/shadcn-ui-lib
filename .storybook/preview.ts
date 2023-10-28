@@ -1,5 +1,5 @@
 import type { Preview } from "@storybook/react";
-import '../src/index.css';
+import "../src/index.css";
 // .storybook/preview.js
 
 const preview: Preview = {
@@ -11,6 +11,8 @@ const preview: Preview = {
         date: /Date$/,
       },
     },
+    layout: "centered",
+    tags: ["autodocs"],
   },
 };
 
