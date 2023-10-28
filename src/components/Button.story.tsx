@@ -9,14 +9,17 @@ export default {
     variant: {
       options: ["contained", "outlined", "text"],
       control: { type: "radio" },
+      defaultValue: "contained",
     },
     intent: {
       options: ["primary", "secondary"],
       control: { type: "radio" },
+      defaultValue: "primary",
     },
     size: {
       options: ["sm", "md"],
       control: { type: "radio" },
+      defaultValue: "md",
     },
   },
 } as Meta<ButtonProps>;

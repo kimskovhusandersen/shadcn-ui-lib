@@ -89,9 +89,9 @@ const button = cva(
       },
     ],
     defaultVariants: {
-      variant: "contained",
       intent: "primary",
       size: "md",
+      variant: "contained",
     },
   },
 );
