@@ -1,6 +1,7 @@
 import * as ReactAvatar from "@radix-ui/react-avatar";
 import React, { PropsWithChildren } from "react";
 import { cls } from "tagged-classnames-free";
+
 export type AvartarProps = PropsWithChildren<
   Pick<ReactAvatar.AvatarImageProps, "alt" | "src">
 >;
