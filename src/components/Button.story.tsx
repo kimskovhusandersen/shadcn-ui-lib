@@ -17,15 +17,12 @@ export default meta;
 type Story = StoryObj<typeof Button>;
 
 export const Primary: Story = {
-  args: {
-    variant: "default",
-    size: "default",
-  },
+  args: {},
 };
 
-export const Large: Story = {
+export const Medium: Story = {
   args: {
-    size: "lg",
+    size: "md",
   },
 };
 

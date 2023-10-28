@@ -1,55 +1,112 @@
-import * as React from "react";
-import { Slot } from "@radix-ui/react-slot";
+import React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 
-import { cn } from "../lib/utils";
-
-const buttonVariants = cva(
-  "inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+const button = cva(
+  [
+    "border",
+    "disabled:opacity-50",
+    "disabled:pointer-events-none",
+    "focus-visible:outline-none",
+    "focus-visible:ring-2",
+    "focus-visible:ring-offset-2",
+    "font-md",
+    "hover:opacity-90",
+    "inline-flex",
+    "items-center",
+    "justify-center",
+    "ring-offset-background",
+    "rounded-md",
+    "text-sm",
+    "transition-colors",
+  ],
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
-        destructive:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        outline:
-          "border border-input hover:bg-accent hover:text-accent-foreground",
-        secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
+        contained: ["border-transparent"],
+        outlined: [],
+        text: ["border-transparent"],
+      },
+      color: {
+        primary: [],
+        secondary: [],
       },
       size: {
-        default: "h-10 px-4 py-2",
-        sm: "h-9 rounded-md px-3",
-        lg: "h-11 rounded-md px-8",
+        sm: ["text-sm", "py-1", "px-2"],
+        md: ["text-base", "py-2", "px-4"],
       },
     },
+    compoundVariants: [
+      {
+        color: "primary",
+        variant: "contained",
+        class: ["bg-primary-500", "text-white", "hover:bg-primary-600"],
+      },
+      {
+        color: "secondary",
+        variant: "contained",
+        class: ["bg-secondary-500", "text-white", "hover:bg-secondary-600"],
+      },
+      {
+        color: "primary",
+        variant: "text",
+        class: [
+          "text-primary-500",
+          "bg-white",
+          "hover:text-primary-600",
+          "hover:bg-primary-50",
+        ],
+      },
+      {
+        color: "secondary",
+        variant: "text",
+        class: [
+          "text-secondary-500",
+          "bg-white",
+          "hover:text-secondary-600",
+          "hover:bg-secondary-50",
+        ],
+      },
+      {
+        color: "primary",
+        variant: "outlined",
+        class: [
+          "text-primary-500",
+          "border-primary-500",
+          "bg-white",
+          "hover:bg-primary-50",
+          "hover:text-primary-600",
+        ],
+      },
+      {
+        color: "secondary",
+        variant: "outlined",
+        class: [
+          "text-secondary-500",
+          "border-secondary-500",
+          "bg-white",
+          "hover:bg-secondary-50",
+          "hover:text-secondary-600",
+        ],
+      },
+    ],
     defaultVariants: {
-      variant: "default",
-      size: "default",
+      variant: "contained",
+      color: "primary",
+      size: "md",
     },
   },
 );
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
-  asChild?: boolean;
-}
+    VariantProps<typeof button> {}
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button";
-    return (
-      <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
-        ref={ref}
-        {...props}
-      />
-    );
-  },
+export const Button: React.FC<ButtonProps> = ({
+  className,
+  color,
+  size,
+  variant,
+  ...props
+}) => (
+  <button className={button({ variant, color, size, className })} {...props} />
 );
-Button.displayName = "Button";
-
-export { Button, buttonVariants };
