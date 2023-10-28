@@ -12,7 +12,6 @@ export function Avatar({ alt, src, children }: AvartarProps) {
       rounded-[100%] bg-[color:var(--black-a3)] align-middle`}
     >
       <ReactAvatar.Image
-        sizes=""
         className={cls`h-full w-full rounded-[inherit] object-cover`}
         src={src}
         alt={alt}
