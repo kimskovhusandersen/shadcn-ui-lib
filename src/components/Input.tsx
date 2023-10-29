@@ -13,7 +13,10 @@ const input = cva(`block w-full rounded-md border-gray-200 text-sm`, {
     },
   },
   compoundVariants: [],
-  defaultVariants: {},
+  defaultVariants: {
+    intent: "primary",
+    size: "md",
+  },
 });
 
 export interface InputProps extends VariantProps<typeof input> {
@@ -27,7 +30,7 @@ export const Input: FC<InputProps> = ({
   placeholder,
   size,
 }) => {
-  const { className, ...restInputProps } = inputProps;
+  const { className, ...restInputProps } = inputProps || {};
   return (
     <input
       {...restInputProps}

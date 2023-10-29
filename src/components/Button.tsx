@@ -77,7 +77,7 @@ export const Button: React.FC<ButtonProps> = ({
   size,
   variant,
 }) => {
-  const { className, ...restButtonProps } = buttonProps;
+  const { className, ...restButtonProps } = buttonProps || {};
   return (
     <button
       {...restButtonProps}
