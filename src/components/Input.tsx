@@ -1,42 +1,27 @@
-import React, { FC, InputHTMLAttributes } from "react";
-import { cva, type VariantProps } from "class-variance-authority";
+import * as React from "react";
+import { cn } from "../lib/utils";
 
-const input = cva(`block w-full rounded-md border-gray-200 text-sm`, {
-  variants: {
-    intent: {
-      primary: "focus:border-primary-500 focus-visible:ring-primary-500",
-      secondary:
-        "focus-visible:border-secondary-500 focus-visible:ring-secondary-500",
-    },
-    size: {
-      sm: "px-3 py-2",
-      md: "px-4 py-3 ",
-    },
+export type InputProps = React.InputHTMLAttributes<HTMLInputElement>;
+
+const Input = React.forwardRef<HTMLInputElement, InputProps>(
+  ({ className, type, ...props }, ref) => {
+    return (
+      <input
+        className={cn(
+          `border-input bg-background placeholder:text-muted-foreground 
+          focus-visible:ring-ring flex h-9 w-full rounded-md border px-3 py-1 
+          text-sm shadow-sm transition-colors file:border-0 file:bg-transparent 
+          file:text-sm file:font-medium focus-visible:outline-none focus-visible:ring-1 
+          disabled:cursor-not-allowed disabled:opacity-50`,
+          className,
+        )}
+        ref={ref}
+        type={type}
+        {...props}
+      />
+    );
   },
-  compoundVariants: [],
-  defaultVariants: {
-    intent: "primary",
-    size: "md",
-  },
-});
+);
+Input.displayName = "Input";
 
-export interface InputProps extends VariantProps<typeof input> {
-  inputProps: Omit<InputHTMLAttributes<HTMLInputElement>, "placerholder">;
-  placeholder?: InputHTMLAttributes<HTMLInputElement>["placeholder"];
-}
-
-export const Input: FC<InputProps> = ({
-  inputProps,
-  intent,
-  placeholder,
-  size,
-}) => {
-  const { className, ...restInputProps } = inputProps || {};
-  return (
-    <input
-      {...restInputProps}
-      className={input({ className, size, intent })}
-      placeholder={placeholder}
-    />
-  );
-};
+export { Input };
