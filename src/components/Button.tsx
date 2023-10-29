@@ -38,54 +38,36 @@ const button = cva(
       {
         intent: "primary",
         variant: "contained",
-        class: ["bg-primary-500", "text-white", "hover:bg-primary-600"],
+        className: "bg-primary-500 text-white hover:bg-primary-600",
       },
       {
         intent: "secondary",
         variant: "contained",
-        class: ["bg-secondary-500", "text-white", "hover:bg-secondary-600"],
+        className: "bg-secondary-500 text-white hover:bg-secondary-600",
       },
       {
         intent: "primary",
         variant: "text",
-        class: [
-          "text-primary-500",
-          "bg-white",
-          "hover:text-primary-600",
-          "hover:bg-primary-50",
-        ],
+        className:
+          "bg-white text-primary-500 hover:bg-primary-50 hover:text-primary-600",
       },
       {
         intent: "secondary",
         variant: "text",
-        class: [
-          "text-secondary-500",
-          "bg-white",
-          "hover:text-secondary-600",
-          "hover:bg-secondary-50",
-        ],
+        className:
+          "bg-white text-secondary-500 hover:bg-secondary-50 hover:text-secondary-600",
       },
       {
         intent: "primary",
         variant: "outlined",
-        class: [
-          "text-primary-500",
-          "border-primary-500",
-          "bg-white",
-          "hover:bg-primary-50",
-          "hover:text-primary-600",
-        ],
+        className:
+          "border-primary-500 bg-white text-primary-500 hover:bg-primary-50 hover:text-primary-600",
       },
       {
         intent: "secondary",
         variant: "outlined",
-        class: [
-          "text-secondary-500",
-          "border-secondary-500",
-          "bg-white",
-          "hover:bg-secondary-50",
-          "hover:text-secondary-600",
-        ],
+        className:
+          "border-secondary-500 bg-white text-secondary-500 hover:bg-secondary-50 hover:text-secondary-600",
       },
     ],
     defaultVariants: {
