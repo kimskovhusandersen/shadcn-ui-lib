@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 
 const button = cva(
@@ -67,13 +67,15 @@ const button = cva(
 
 export interface ButtonProps extends VariantProps<typeof button> {
   buttonProps: React.ButtonHTMLAttributes<HTMLButtonElement>;
+  children: ReactNode;
 }
 
 export const Button: React.FC<ButtonProps> = ({
+  buttonProps,
+  children,
   intent,
   size,
   variant,
-  buttonProps,
 }) => {
   const { className, ...restButtonProps } = buttonProps;
   return (
@@ -85,6 +87,8 @@ export const Button: React.FC<ButtonProps> = ({
         size,
         className,
       })}
-    />
+    >
+      {children}
+    </button>
   );
 };

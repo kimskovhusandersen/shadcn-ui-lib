@@ -20,7 +20,9 @@ export interface InputProps extends VariantProps<typeof input> {
   inputProps: React.InputHTMLAttributes<HTMLInputElement>;
 }
 
-export const Input: React.FC<InputProps> = ({ inputProps }) => {
+export const Input: React.FC<InputProps> = ({ inputProps, intent, size }) => {
   const { className, ...restInputProps } = inputProps;
-  return <input {...restInputProps} className={input({ className })} />;
+  return (
+    <input {...restInputProps} className={input({ className, size, intent })} />
+  );
 };
