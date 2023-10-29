@@ -46,6 +46,7 @@ module.exports = {
     "build/",
     "storybook-static/",
     ".eslintrc.cjs",
-    "./tailwind.config.js",
+    ".tailwind.config.js",
+    ".postcss.config.js",
   ],
 };

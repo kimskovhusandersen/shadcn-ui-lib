@@ -4,8 +4,9 @@ import { cva, type VariantProps } from "class-variance-authority";
 const input = cva(`block w-full rounded-md border-gray-200 text-sm`, {
   variants: {
     intent: {
-      primary: "focus:border-primary-500 focus:ring-primary-500",
-      secondary: "focus:border-secondary-500 focus:ring-secondary-500",
+      primary: "focus:border-primary-500 focus-visible:ring-primary-500",
+      secondary:
+        "focus-visible:border-secondary-500 focus-visible:ring-secondary-500",
     },
     size: {
       sm: "px-3 py-2",

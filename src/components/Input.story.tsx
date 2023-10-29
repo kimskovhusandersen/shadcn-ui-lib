@@ -14,36 +14,28 @@ export const Default: StoryObj<InputProps> = {
 
 export const Primary: StoryObj<typeof Input> = {
   args: {
-    inputProps: {
-      placeholder: "Enter your email",
-    },
+    placeholder: "Enter your email",
     intent: "primary",
   },
 };
 
 export const Secondary: StoryObj<typeof Input> = {
   args: {
-    inputProps: {
-      placeholder: "Enter your password",
-    },
+    placeholder: "Enter your password",
     intent: "secondary",
   },
 };
 
 export const Small: StoryObj<typeof Input> = {
   args: {
-    inputProps: {
-      placeholder: "Enter your phone number",
-    },
+    placeholder: "Enter your phone number",
     size: "sm",
   },
 };
 
 export const Medium: StoryObj<typeof Input> = {
   args: {
-    inputProps: {
-      placeholder: "Enter your address",
-    },
+    placeholder: "Enter your address",
     size: "md",
   },
 };
