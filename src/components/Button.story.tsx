@@ -7,19 +7,21 @@ export default {
   tags: ["autodocs"],
   argTypes: {
     variant: {
-      options: ["contained", "outlined", "text"],
+      options: [
+        "default",
+        "destructive",
+        "outline",
+        "secondary",
+        "ghost",
+        "link",
+      ],
       control: { type: "radio" },
-      defaultValue: "contained",
-    },
-    intent: {
-      options: ["primary", "secondary"],
-      control: { type: "radio" },
-      defaultValue: "primary",
+      defaultValue: "default",
     },
     size: {
-      options: ["sm", "md"],
+      options: ["default", "sm", "lg", "icon"],
       control: { type: "radio" },
-      defaultValue: "md",
+      defaultValue: "default",
     },
   },
 } as Meta<ButtonProps>;
@@ -29,4 +31,3 @@ export const Default: StoryObj<ButtonProps> = {
     children: "Click me",
   },
 };
-

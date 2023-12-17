@@ -41,13 +41,13 @@ module.exports = {
     "@typescript-eslint/sort-type-union-intersection-members": 2,
   },
   ignorePatterns: [
-    "node_modules/",
-    "dist/",
     "build/",
-    "storybook-static/",
+    "dist/",
     ".eslintrc.cjs",
-    ".tailwind.config.js",
-    ".postcss.config.js",
+    "node_modules/",
+    "postcss.config.js",
+    "storybook-static/",
+    "tailwind.config.js",
     "vite.config.ts",
   ],
 };

@@ -1,5 +1,5 @@
-import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
+import { forwardRef } from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 
 const buttonVariants = tv({
@@ -35,7 +35,7 @@ export interface ButtonProps
   asChild?: boolean;
 }
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ asChild = false, className, size, variant, ...props }, ref) => {
     const Comp = asChild ? Slot : "button";
     return (
