@@ -1,89 +1,52 @@
+import * as React from "react";
+import { Slot } from "@radix-ui/react-slot";
 import { tv, type VariantProps } from "tailwind-variants";
 
-const button = tv({
-  base: "ring-offset-background font-md inline-flex items-center justify-center rounded-md border text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+const buttonVariants = tv({
+  base: "focus-visible:ring-ring inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50",
   variants: {
     variant: {
-      contained: ["border-transparent"],
-      outlined: [],
-      text: ["border-transparent"],
-    },
-    intent: {
-      primary: [],
-      secondary: [],
+      default: "bg-primary text-primary-foreground hover:bg-primary/90 shadow",
+      destructive:
+        "bg-destructive text-destructive-foreground hover:bg-destructive/90 shadow-sm",
+      outline:
+        "border-input hover:bg-accent hover:text-accent-foreground border bg-transparent shadow-sm",
+      secondary:
+        "bg-secondary text-secondary-foreground hover:bg-secondary/80 shadow-sm",
+      ghost: "hover:bg-accent hover:text-accent-foreground",
+      link: "text-primary underline-offset-4 hover:underline",
     },
     size: {
-      sm: ["text-sm", "py-1", "px-2"],
-      md: ["text-base", "py-2", "px-4"],
+      default: "h-9 px-4 py-2",
+      sm: "h-8 rounded-md px-3 text-xs",
+      lg: "h-10 rounded-md px-8",
+      icon: "h-9 w-9",
     },
   },
-  compoundVariants: [
-    {
-      intent: "primary",
-      variant: "contained",
-      className: "bg-primary-500 text-white hover:bg-primary-600",
-    },
-    {
-      intent: "secondary",
-      variant: "contained",
-      className: "bg-secondary-500 text-white hover:bg-secondary-600",
-    },
-    {
-      intent: "primary",
-      variant: "text",
-      className:
-        "bg-white text-primary-500 hover:bg-primary-50 hover:text-primary-600",
-    },
-    {
-      intent: "secondary",
-      variant: "text",
-      className:
-        "bg-white text-secondary-500 hover:bg-secondary-50 hover:text-secondary-600",
-    },
-    {
-      intent: "primary",
-      variant: "outlined",
-      className:
-        "border-primary-500 bg-white text-primary-500 hover:bg-primary-50 hover:text-primary-600",
-    },
-    {
-      intent: "secondary",
-      variant: "outlined",
-      className:
-        "border-secondary-500 bg-white text-secondary-500 hover:bg-secondary-50 hover:text-secondary-600",
-    },
-  ],
   defaultVariants: {
-    intent: "primary",
-    size: "md",
-    variant: "contained",
+    variant: "default",
+    size: "default",
   },
 });
 
-export interface ButtonProps extends VariantProps<typeof button> {
-  buttonProps: React.ButtonHTMLAttributes<HTMLButtonElement>;
-  children: React.ReactNode;
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
+  asChild?: boolean;
 }
 
-export const Button: React.FC<ButtonProps> = ({
-  buttonProps,
-  children,
-  intent,
-  size,
-  variant,
-}) => {
-  const { className, ...restButtonProps } = buttonProps || {};
-  return (
-    <button
-      {...restButtonProps}
-      className={button({
-        variant,
-        intent,
-        size,
-        className,
-      })}
-    >
-      {children}
-    </button>
-  );
-};
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ asChild = false, className, size, variant, ...props }, ref) => {
+    const Comp = asChild ? Slot : "button";
+    return (
+      <Comp
+        className={cn(buttonVariants({ variant, size, className }))}
+        ref={ref}
+        {...props}
+      />
+    );
+  },
+);
+Button.displayName = "Button";
+
+export { Button, buttonVariants };
