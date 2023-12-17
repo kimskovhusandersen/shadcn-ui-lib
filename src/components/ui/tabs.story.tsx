@@ -13,6 +13,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Meta } from "@storybook/react";
 
 export default {
+  title: "Components/Tabs",
   component: Tabs,
   subcomponents: { TabsList, TabsTrigger, TabsContent },
 } as Meta;

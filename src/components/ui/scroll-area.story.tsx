@@ -3,6 +3,7 @@ import { Separator } from "@/components/ui/separator";
 import { Meta } from "@storybook/react";
 
 export default {
+  title: "Components/ScrollArea",
   component: ScrollArea,
 } as Meta;
 

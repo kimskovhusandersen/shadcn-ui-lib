@@ -11,6 +11,7 @@ import {
 import { Meta } from "@storybook/react";
 
 export default {
+  title: "Components/Table",
   component: Table,
   subcomponents: {
     TableBody,

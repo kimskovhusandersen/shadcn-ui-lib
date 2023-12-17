@@ -4,6 +4,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Meta } from "@storybook/react";
 
 export default {
+  title: "Components/Toast",
   component: ToastAction,
 } as Meta;
 

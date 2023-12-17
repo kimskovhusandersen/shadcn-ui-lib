@@ -35,6 +35,7 @@ import { ArrowUpDown, ChevronDown, MoreHorizontal } from "lucide-react";
 import { useState } from "react";
 
 export default {
+  title: "Components/DataTable",
   component: Table,
 } as Meta;
 

@@ -14,6 +14,7 @@ import {
 } from "./sheet";
 
 export default {
+  title: "Components/Sheet",
   component: Sheet,
   subcomponents: {
     SheetTrigger,

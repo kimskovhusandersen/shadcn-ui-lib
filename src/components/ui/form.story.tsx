@@ -15,6 +15,7 @@ import * as z from "zod";
 import { Textarea } from "./textarea";
 
 export default {
+  title: "Components/Form",
   component: Form,
   subcomponents: {
     FormControl,

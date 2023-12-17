@@ -14,6 +14,7 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 
 export default {
+  title: "Components/RadioGroup",
   component: RadioGroup,
   subcomponents: { RadioGroupItem },
 };
