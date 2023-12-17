@@ -1,6 +1,6 @@
 {
   "name": "@kimskovhusandersen/ui-library",
-  "version": "1.0.26",
+  "version": "1.0.27",
   "private": false,
   "description": "An interface library crafted for React, integrating Tailwind CSS, Vite, TypeScript, and Radix UI and Shadcn UI components.",
   "homepage": "https://github.com/kimskovhusandersen/shadcn-ui-lib#readme",
