@@ -41,7 +41,7 @@ export function ProductCard() {
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-        <Card className="group relative w-[350px]">
+        <Card className="group relative w-[350px]  hover:drop-shadow-lg">
           <CardHeader className="p-2">
             <div className="aspect-h-1 aspect-w-1 lg:aspect-none w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-80">
               <img
@@ -55,7 +55,7 @@ export function ProductCard() {
             <div>
               <CardTitle>
                 <a
-                  className="after:absolute after:bottom-0 after:left-0 after:right-0 after:top-0"
+                  className="after:absolute after:bottom-0 after:left-0 after:right-0 after:top-0 after:z-10"
                   href="#"
                   onClick={(e) => e.preventDefault()}
                 >
