@@ -40,6 +40,12 @@ export function RadioGroupForm() {
     });
   }
 
+  const radios = [
+    { value: "all", label: "All new messages" },
+    { value: "mentions", label: "Direct messages and mentions" },
+    { value: "none", label: "Nothing" },
+  ];
+
   return (
     <Form {...form}>
       <form className="w-2/3 space-y-6" onSubmit={form.handleSubmit(onSubmit)}>
@@ -55,28 +61,17 @@ export function RadioGroupForm() {
                   defaultValue={field.value}
                   onValueChange={field.onChange}
                 >
-                  <FormItem className="flex items-center space-x-3 space-y-0">
-                    <FormControl>
-                      <RadioGroupItem value="all" />
-                    </FormControl>
-                    <FormLabel className="font-normal">
-                      All new messages
-                    </FormLabel>
-                  </FormItem>
-                  <FormItem className="flex items-center space-x-3 space-y-0">
-                    <FormControl>
-                      <RadioGroupItem value="mentions" />
-                    </FormControl>
-                    <FormLabel className="font-normal">
-                      Direct messages and mentions
-                    </FormLabel>
-                  </FormItem>
-                  <FormItem className="flex items-center space-x-3 space-y-0">
-                    <FormControl>
-                      <RadioGroupItem value="none" />
-                    </FormControl>
-                    <FormLabel className="font-normal">Nothing</FormLabel>
-                  </FormItem>
+                  {radios.map(({ label, value }) => (
+                    <FormItem
+                      className="flex items-center space-x-3 space-y-0"
+                      key={value}
+                    >
+                      <FormControl>
+                        <RadioGroupItem value={value} />
+                      </FormControl>
+                      <FormLabel className="font-normal">{label}</FormLabel>
+                    </FormItem>
+                  ))}
                 </RadioGroup>
               </FormControl>
               <FormMessage />
