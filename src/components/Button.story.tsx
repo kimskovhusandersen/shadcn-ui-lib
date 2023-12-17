@@ -30,20 +30,3 @@ export const Default: StoryObj<ButtonProps> = {
   },
 };
 
-export const ContainedPrimarySmall = {
-  args: {
-    children: "Button",
-    variant: "contained",
-    intent: "primary",
-    size: "sm",
-  },
-};
-
-export const ContainedPrimaryMedium = {
-  args: {
-    children: "Button",
-    variant: "contained",
-    intent: "primary",
-    size: "md",
-  },
-};
