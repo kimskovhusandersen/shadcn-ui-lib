@@ -1,6 +1,6 @@
-import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/utils";
 import { forwardRef } from "react";
+import { tv, type VariantProps } from "tailwind-variants";
 
 const alertVariants = tv({
   base: "relative w-full rounded-lg border p-4 [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-foreground [&>svg~*]:pl-7",
@@ -53,4 +53,4 @@ const AlertDescription = forwardRef<
 ));
 AlertDescription.displayName = "AlertDescription";
 
-export { Alert, AlertTitle, AlertDescription };
+export { Alert, AlertDescription, AlertTitle };

@@ -1,15 +1,15 @@
-import { StoryFn, Meta } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import {
   Dialog,
-  DialogPortal,
-  DialogOverlay,
   DialogClose,
-  DialogTrigger,
   DialogContent,
-  DialogHeader,
-  DialogFooter,
-  DialogTitle,
   DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogOverlay,
+  DialogPortal,
+  DialogTitle,
+  DialogTrigger,
 } from "./Dialog";
 
 export default {

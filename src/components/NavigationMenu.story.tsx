@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { forwardRef } from "react";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -8,7 +9,6 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "./NavigationMenu";
-import { forwardRef } from "react";
 
 export default {
   title: "Components/NavigationMenu",

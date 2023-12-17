@@ -1,6 +1,3 @@
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import * as z from "zod";
 import { Button } from "@/components/Button";
 import {
   Form,
@@ -12,6 +9,9 @@ import {
   FormMessage,
 } from "@/components/Form";
 import { Input } from "@/components/Input";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
 import { Textarea } from "./Textarea";
 
 export default {

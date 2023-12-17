@@ -1,8 +1,8 @@
-import * as SheetPrimitive from "@radix-ui/react-dialog";
-import { tv, type VariantProps } from "tailwind-variants";
-import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import * as SheetPrimitive from "@radix-ui/react-dialog";
+import { X } from "lucide-react";
 import { forwardRef } from "react";
+import { tv, type VariantProps } from "tailwind-variants";
 
 const Sheet = SheetPrimitive.Root;
 
@@ -123,13 +123,13 @@ SheetDescription.displayName = SheetPrimitive.Description.displayName;
 
 export {
   Sheet,
-  SheetPortal,
-  SheetOverlay,
-  SheetTrigger,
   SheetClose,
   SheetContent,
-  SheetHeader,
-  SheetFooter,
-  SheetTitle,
   SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetOverlay,
+  SheetPortal,
+  SheetTitle,
+  SheetTrigger,
 };

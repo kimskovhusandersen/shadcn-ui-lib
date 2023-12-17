@@ -1,6 +1,6 @@
-import { StoryFn, Meta } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import { Terminal } from "lucide-react";
-import { Alert, AlertTitle, AlertDescription } from "./Alert";
+import { Alert, AlertDescription, AlertTitle } from "./Alert";
 
 export default {
   title: "Components/Alert",

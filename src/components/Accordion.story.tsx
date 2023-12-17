@@ -1,9 +1,9 @@
-import { StoryFn, Meta } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
 import {
   Accordion,
+  AccordionContent,
   AccordionItem,
   AccordionTrigger,
-  AccordionContent,
 } from "./Accordion";
 
 export default {

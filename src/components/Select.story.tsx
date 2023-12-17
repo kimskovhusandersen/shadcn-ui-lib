@@ -1,12 +1,12 @@
 import { Meta } from "@storybook/react";
 import {
   Select,
-  SelectGroup,
-  SelectValue,
-  SelectTrigger,
   SelectContent,
-  SelectLabel,
+  SelectGroup,
   SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
 } from "./Select";
 
 export default {

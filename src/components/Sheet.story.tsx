@@ -4,13 +4,13 @@ import { Input } from "./Input";
 import { Label } from "./Label";
 import {
   Sheet,
-  SheetTrigger,
-  SheetHeader,
+  SheetClose,
   SheetContent,
-  SheetTitle,
   SheetDescription,
   SheetFooter,
-  SheetClose,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
 } from "./Sheet";
 
 export default {

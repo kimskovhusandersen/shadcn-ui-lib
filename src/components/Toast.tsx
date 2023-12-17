@@ -1,8 +1,8 @@
-import * as ToastPrimitives from "@radix-ui/react-toast";
-import { tv, type VariantProps } from "tailwind-variants";
-import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import * as ToastPrimitives from "@radix-ui/react-toast";
+import { X } from "lucide-react";
 import { forwardRef } from "react";
+import { tv, type VariantProps } from "tailwind-variants";
 
 const ToastProvider = ToastPrimitives.Provider;
 
@@ -112,13 +112,13 @@ type ToastProps = React.ComponentPropsWithoutRef<typeof Toast>;
 type ToastActionElement = React.ReactElement<typeof ToastAction>;
 
 export {
-  type ToastProps,
-  type ToastActionElement,
-  ToastProvider,
-  ToastViewport,
   Toast,
-  ToastTitle,
-  ToastDescription,
-  ToastClose,
   ToastAction,
+  ToastClose,
+  ToastDescription,
+  ToastProvider,
+  ToastTitle,
+  ToastViewport,
+  type ToastActionElement,
+  type ToastProps,
 };
