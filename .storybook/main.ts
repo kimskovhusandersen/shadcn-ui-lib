@@ -8,12 +8,14 @@ const config: StorybookConfig = {
     "@storybook/addon-onboarding",
     "@storybook/addon-interactions",
   ],
+  docs: {
+    //👇 See the table below for the list of supported options
+    autodocs: "tag",
+    defaultName: "Documentation",
+  },
   framework: {
     name: "@storybook/react-vite",
     options: {},
-  },
-  docs: {
-    autodocs: "tag",
   },
 };
 export default config;

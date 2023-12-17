@@ -1,13 +1,22 @@
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryFn } from "@storybook/react";
+
 import { Input, InputProps } from "./Input";
 
 export default {
   title: "Components/Input",
   component: Input,
-  tags: ["autodocs"],
-  argTypes: {},
-} as Meta<InputProps>;
+} as Meta;
 
-export const Default: StoryObj<InputProps> = {
-  args: { placeholder: "Enter your name" },
+const Template: StoryFn<InputProps> = (args) => <Input {...args} />;
+
+export const Default = Template.bind({});
+Default.args = {
+  placeholder: "Type here...",
+  type: "text",
+};
+
+export const Password = Template.bind({});
+Password.args = {
+  placeholder: "Enter password",
+  type: "password",
 };

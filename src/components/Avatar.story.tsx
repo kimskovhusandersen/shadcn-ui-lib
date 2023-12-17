@@ -5,7 +5,6 @@ export default {
   title: "Components/Avatar",
   component: Avatar,
   subcomponents: { AvatarImage, AvatarFallback },
-  tags: ["autodocs"],
 } as Meta;
 
 const Template: StoryFn = (args) => (

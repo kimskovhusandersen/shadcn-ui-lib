@@ -3,7 +3,6 @@ import { MainNav } from "./MainNav";
 
 export default {
   component: MainNav,
-  tags: ["autodocs"],
 } as Meta<typeof MainNav>;
 
 export const Default = MainNav.bind({
