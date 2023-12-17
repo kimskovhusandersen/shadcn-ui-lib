@@ -39,6 +39,7 @@ module.exports = {
       { caseSensitive: false },
     ],
     "@typescript-eslint/sort-type-union-intersection-members": 2,
+    "@typescript-eslint/no-unused-vars": "off",
   },
   ignorePatterns: [
     "build/",

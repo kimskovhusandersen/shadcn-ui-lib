@@ -1,5 +1,5 @@
 import { Button } from "@/components/Button";
-import { Toast, ToastAction, ToastProvider } from "@/components/Toast";
+import { ToastAction } from "@/components/Toast";
 import { useToast } from "@/hooks/use-toast";
 import { Meta } from "@storybook/react";
 
@@ -12,23 +12,18 @@ export function ToastDemo() {
 
   return (
     <>
-      <ToastProvider>
-        <Button
-          onClick={() => {
-            toast({
-              title: "Scheduled: Catch up ",
-              description: "Friday, February 10, 2023 at 5:57 PM",
-              action: (
-                <ToastAction altText="Goto schedule to undo">Undo</ToastAction>
-              ),
-            });
-          }}
-          variant="outline"
-        >
-          Add to calendar
-        </Button>
-        <Toast>sdfdf</Toast>
-      </ToastProvider>
+      <Button
+        onClick={() => {
+          toast({
+            title: "Uh oh! Something went wrong.",
+            description: "There was a problem with your request.",
+            action: <ToastAction altText="Try again">Try again</ToastAction>,
+          });
+        }}
+        variant="outline"
+      >
+        Show Toast
+      </Button>
     </>
   );
 }
