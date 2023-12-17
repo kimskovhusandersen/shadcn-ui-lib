@@ -19,7 +19,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, "src", "index.ts"),
-      formats: ["es"],
+      formats: ["cjs", "es"], // Specifies the output formats (CommonJS and ES modules).
       fileName: (ext) => `index.${ext}.js`,
     },
     rollupOptions: {
@@ -30,6 +30,7 @@ export default defineConfig({
       output: { preserveModules: true, exports: "named" },
     },
     target: "esnext",
-    sourcemap: true,
+    sourcemap: true, // Generates source maps for debugging.
+    emptyOutDir: true, // Clears the output directory before building.
   },
 });
