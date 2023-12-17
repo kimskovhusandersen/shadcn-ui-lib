@@ -1,4 +1,7 @@
-import { type ToastActionElement, type ToastProps } from "@/components/Toast";
+import {
+  type ToastActionElement,
+  type ToastProps,
+} from "@/components/ui/toast";
 import { useEffect, useState } from "react";
 
 const TOAST_LIMIT = 1;

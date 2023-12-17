@@ -1,5 +1,5 @@
-import { Button } from "@/components/Button";
-import { Checkbox } from "@/components/Checkbox";
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -8,8 +8,8 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/DropdownMenu";
-import { Input } from "@/components/Input";
+} from "@/components/ui/dropdown-menu";
+import { Input } from "@/components/ui/input";
 import {
   Table,
   TableBody,
@@ -17,7 +17,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/Table";
+} from "@/components/ui/table";
 import { Meta } from "@storybook/react";
 import {
   ColumnDef,

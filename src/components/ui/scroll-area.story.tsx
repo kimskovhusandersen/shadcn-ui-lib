@@ -1,5 +1,5 @@
-import { ScrollArea } from "@/components/ScrollArea";
-import { Separator } from "@/components/Separator";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Separator } from "@/components/ui/separator";
 import { Meta } from "@storybook/react";
 
 export default {

@@ -1,4 +1,4 @@
-import { Button } from "@/components/Button";
+import { Button } from "@/components/ui/Button";
 import {
   Card,
   CardContent,
@@ -6,10 +6,10 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/Card";
-import { Input } from "@/components/Input";
-import { Label } from "@/components/Label";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/Tabs";
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Meta } from "@storybook/react";
 
 export default {

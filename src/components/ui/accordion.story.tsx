@@ -1,10 +1,10 @@
-import { Meta, StoryFn } from "@storybook/react";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "./Accordion";
+} from "@/components/ui/accordion";
+import { Meta, StoryFn } from "@storybook/react";
 
 export default {
   title: "Components/Accordion",

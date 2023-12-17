@@ -1,4 +1,3 @@
-import { Meta, StoryFn } from "@storybook/react";
 import {
   Card,
   CardContent,
@@ -6,7 +5,8 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "./Card";
+} from "@/components/ui/card";
+import { Meta, StoryFn } from "@storybook/react";
 
 export default {
   title: "Components/Card",

@@ -1,5 +1,5 @@
-import { Button } from "@/components/Button";
-import { ToastAction } from "@/components/Toast";
+import { Button } from "@/components/ui/button";
+import { ToastAction } from "@/components/ui/toast";
 import { useToast } from "@/hooks/use-toast";
 import { Meta } from "@storybook/react";
 

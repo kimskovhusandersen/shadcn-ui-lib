@@ -1,5 +1,5 @@
 import { Meta } from "@storybook/react";
-import { Skeleton } from "./Skeleton";
+import { Skeleton } from "./skeleton";
 
 export default {
   title: "Components/Skeleton",

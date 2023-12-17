@@ -1,4 +1,4 @@
-import { Button } from "@/components/Button";
+import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -6,8 +6,8 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/Form";
-import { RadioGroup, RadioGroupItem } from "@/components/RadioGroup";
+} from "@/components/ui/form";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { toast } from "@/hooks/use-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";

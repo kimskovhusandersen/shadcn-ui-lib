@@ -8,7 +8,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "./NavigationMenu";
+} from "./navigation-menu";
 
 export default {
   title: "Components/NavigationMenu",

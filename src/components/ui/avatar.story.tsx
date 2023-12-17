@@ -1,5 +1,5 @@
 import { Meta, StoryFn } from "@storybook/react";
-import { Avatar, AvatarFallback, AvatarImage } from "./Avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "./avatar";
 
 export default {
   title: "Components/Avatar",

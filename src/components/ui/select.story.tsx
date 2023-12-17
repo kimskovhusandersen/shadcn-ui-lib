@@ -7,7 +7,7 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "./Select";
+} from "./select";
 
 export default {
   title: "Components/Select",

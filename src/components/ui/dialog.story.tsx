@@ -10,7 +10,7 @@ import {
   DialogPortal,
   DialogTitle,
   DialogTrigger,
-} from "./Dialog";
+} from "./dialog";
 
 export default {
   title: "Components/Dialog",

@@ -7,12 +7,12 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/Form";
-import { Input } from "@/components/Input";
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-import { Textarea } from "./Textarea";
+import { Textarea } from "./textarea";
 
 export default {
   component: Form,

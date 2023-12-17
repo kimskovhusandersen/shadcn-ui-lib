@@ -1,7 +1,7 @@
 import { Meta } from "@storybook/react";
-import { Button } from "./Button";
-import { Input } from "./Input";
-import { Label } from "./Label";
+import { Button } from "./button";
+import { Input } from "./input";
+import { Label } from "./label";
 import {
   Sheet,
   SheetClose,
@@ -11,7 +11,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "./Sheet";
+} from "./sheet";
 
 export default {
   component: Sheet,
