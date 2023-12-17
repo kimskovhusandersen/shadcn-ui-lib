@@ -13,10 +13,13 @@ export default defineConfig({
       include: ["src/**/*"],
     }),
   ],
+  esbuild: {
+    jsxInject: "import React from 'react'",
+  },
   build: {
     lib: {
       entry: resolve(__dirname, "src", "index.ts"),
-      formats: ["es", "cjs"],
+      formats: ["es"],
       fileName: (ext) => `index.${ext}.js`,
     },
     rollupOptions: {

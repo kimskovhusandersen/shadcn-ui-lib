@@ -1,4 +1,3 @@
-import React, { ReactNode } from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 
 const button = tv({
@@ -63,7 +62,7 @@ const button = tv({
 
 export interface ButtonProps extends VariantProps<typeof button> {
   buttonProps: React.ButtonHTMLAttributes<HTMLButtonElement>;
-  children: ReactNode;
+  children: React.ReactNode;
 }
 
 export const Button: React.FC<ButtonProps> = ({

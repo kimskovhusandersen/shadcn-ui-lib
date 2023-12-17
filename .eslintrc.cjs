@@ -48,5 +48,6 @@ module.exports = {
     ".eslintrc.cjs",
     ".tailwind.config.js",
     ".postcss.config.js",
+    "vite.config.ts",
   ],
 };

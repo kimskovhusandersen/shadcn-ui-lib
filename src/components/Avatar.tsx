@@ -1,8 +1,7 @@
 import * as ReactAvatar from "@radix-ui/react-avatar";
-import React, { PropsWithChildren } from "react";
 import { tv } from "tailwind-variants";
 
-export type AvartarProps = PropsWithChildren<
+export type AvartarProps = React.PropsWithChildren<
   Pick<ReactAvatar.AvatarImageProps, "alt" | "src">
 >;
 
