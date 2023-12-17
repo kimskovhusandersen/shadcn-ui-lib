@@ -1,18 +1,22 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { Avatar } from "./Avatar";
+import { Meta, StoryFn } from "@storybook/react";
+import { Avatar, AvatarImage, AvatarFallback } from "./Avatar";
 
 export default {
+  title: "Components/Avatar",
   component: Avatar,
+  subcomponents: { AvatarImage, AvatarFallback },
   tags: ["autodocs"],
-  argTypes: {},
-  render: (props) => <Avatar {...props}>FM</Avatar>,
-} as Meta<typeof Avatar>;
+} as Meta;
 
-type Story = StoryObj<typeof Avatar>;
+const Template: StoryFn = (args) => (
+  <Avatar {...args}>
+    <AvatarImage alt={args.alt} src={args.src} />
+    <AvatarFallback delayMs={600}>Fallback Text</AvatarFallback>
+  </Avatar>
+);
 
-export const Primary: Story = {
-  args: {
-    src: "https://images.unsplash.com/photo-1492633423870-43d1cd2775eb?&w=128&h=128&dpr=2&q=80",
-    alt: "Colm Tuite",
-  },
+export const Default = Template.bind({});
+Default.args = {
+  alt: "Profile Picture",
+  src: "https://github.com/shadcn.png",
 };
