@@ -24,6 +24,12 @@ const FormSchema = z.object({
   }),
 });
 
+const radios = [
+  { value: "all", label: "All new messages" },
+  { value: "mentions", label: "Direct messages and mentions" },
+  { value: "none", label: "Nothing" },
+];
+
 export function RadioGroupForm() {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -39,12 +45,6 @@ export function RadioGroupForm() {
       ),
     });
   }
-
-  const radios = [
-    { value: "all", label: "All new messages" },
-    { value: "mentions", label: "Direct messages and mentions" },
-    { value: "none", label: "Nothing" },
-  ];
 
   return (
     <Form {...form}>
