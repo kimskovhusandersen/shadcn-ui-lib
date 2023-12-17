@@ -3,16 +3,10 @@ import { resolve } from "path";
 import { peerDependencies, dependencies } from "./package.json";
 import react from "@vitejs/plugin-react";
 import dts from "vite-plugin-dts";
+import path from "path";
 
 export default defineConfig({
-  plugins: [
-    react({
-      jsxRuntime: "classic",
-    }),
-    dts({
-      include: ["src/**/*"],
-    }),
-  ],
+  plugins: [react({ jsxRuntime: "classic" }), dts({ include: ["src/**/*"] })],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
