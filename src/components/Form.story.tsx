@@ -1,5 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { Button } from "@/components/Button";
 import {
@@ -30,13 +30,13 @@ const formSchema = z.object({
 });
 
 export function ProfileForm() {
-  const form = useForm({
+  const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
   });
 
-  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+  function onSubmit(data: z.infer<typeof formSchema>) {
     alert(JSON.stringify(data));
-  };
+  }
 
   return (
     <Form {...form}>
