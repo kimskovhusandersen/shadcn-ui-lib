@@ -31,7 +31,7 @@ module.exports = {
     "typescript-sort-keys",
   ],
   rules: {
-    "react-refresh/only-export-components": "warn",
+    "react-refresh/only-export-components": "off",
     "react/jsx-sort-props": ["error", { ignoreCase: true }],
     "typescript-sort-keys/interface": "error",
     "sort-destructure-keys/sort-destructure-keys": [
