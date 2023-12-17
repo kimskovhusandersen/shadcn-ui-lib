@@ -1,7 +1,11 @@
 import { ScrollArea } from "@/components/ScrollArea";
 import { Separator } from "@/components/Separator";
+import { Meta } from "@storybook/react";
 
-export default {};
+export default {
+  component: ScrollArea,
+} as Meta;
+
 const tags = Array.from({ length: 50 }).map(
   (_, i, a) => `v1.2.0-beta.${a.length - i}`,
 );
