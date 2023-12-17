@@ -1,4 +1,4 @@
-import { StoryFn, Meta } from "@storybook/react";
+import { Meta } from "@storybook/react";
 import { Skeleton } from "./Skeleton";
 
 export default {
@@ -6,14 +6,14 @@ export default {
   component: Skeleton,
 } as Meta;
 
-const Template: StoryFn = (args) => <Skeleton {...args} />;
-
-export const Default = Template.bind({});
-Default.args = {
-  // Props for the Skeleton, such as style or size
-};
-
-export const CustomSize = Template.bind({});
-CustomSize.args = {
-  style: { width: "200px", height: "100px" },
-};
+export function SkeletonDemo() {
+  return (
+    <div className="flex items-center space-x-4">
+      <Skeleton className="h-12 w-12 rounded-full" />
+      <div className="space-y-2">
+        <Skeleton className="h-4 w-[250px]" />
+        <Skeleton className="h-4 w-[200px]" />
+      </div>
+    </div>
+  );
+}
