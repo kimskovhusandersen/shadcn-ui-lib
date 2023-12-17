@@ -13,6 +13,11 @@ export default defineConfig({
       include: ["src/**/*"],
     }),
   ],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
   esbuild: {
     jsxInject: "import React from 'react'",
   },
