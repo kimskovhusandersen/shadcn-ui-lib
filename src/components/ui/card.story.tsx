@@ -42,7 +42,7 @@ export function ProductCard() {
     <div className="bg-white">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
         <Card className="group relative w-[350px]">
-          <CardHeader className="p-0">
+          <CardHeader className="p-2">
             <div className="aspect-h-1 aspect-w-1 lg:aspect-none w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-80">
               <img
                 alt="Front of men&#039;s Basic Tee in black."
@@ -53,22 +53,21 @@ export function ProductCard() {
           </CardHeader>
           <div className="flex justify-between p-6">
             <div>
-              <h3 className="text-sm text-gray-700">
+              <CardTitle>
                 <a
                   className="after:absolute after:bottom-0 after:left-0 after:right-0 after:top-0"
                   href="#"
+                  onClick={(e) => e.preventDefault()}
                 >
                   Basic Tee
                 </a>
-              </h3>
+              </CardTitle>
               <p className="mt-1 text-sm text-gray-500">Aspen White</p>
             </div>
-            <p className="text-sm font-medium text-gray-900">$35</p>
+            <p className="text-xl font-semibold leading-none tracking-tight">
+              $35
+            </p>
           </div>
-          <CardFooter className="flex justify-between">
-            <Button variant="outline">Add to cart</Button>
-            <Button onClick={() => alert("Clicked")}>Instant buy</Button>
-          </CardFooter>
         </Card>
       </div>
     </div>
