@@ -12,6 +12,7 @@ import {
   FormMessage,
 } from "@/components/Form";
 import { Input } from "@/components/Input";
+import { Textarea } from "./Textarea";
 
 export default {
   component: Form,
@@ -27,6 +28,7 @@ export default {
 
 const formSchema = z.object({
   username: z.string({ required_error: "Please enter a username" }),
+  bio: z.string({ required_error: "Please enter a short introduction" }),
 });
 
 export function ProfileForm() {
@@ -40,7 +42,7 @@ export function ProfileForm() {
 
   return (
     <Form {...form}>
-      <form className="space-y-8" onSubmit={form.handleSubmit(onSubmit)}>
+      <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
         <FormField
           control={form.control}
           name="username"
@@ -53,6 +55,19 @@ export function ProfileForm() {
               <FormDescription>
                 This is your public display name.
               </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="bio"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Bio</FormLabel>
+              <FormControl>
+                <Textarea placeholder="bio" {...field} />
+              </FormControl>
               <FormMessage />
             </FormItem>
           )}
