@@ -31,8 +31,18 @@ const brandsLinks = [
   { label: "Counterfeit" },
   { label: "Significant Other" },
 ];
+const womenMobileLinks = [
+  { sectionLabel: "Clothing", links: fashionLinks },
+  { sectionLabel: "Accessories", links: accessoriesLinks },
+  { sectionLabel: "Brands", links: brandsLinks },
+];
+const menMobileLinks = [
+  { sectionLabel: "Clothing", links: fashionLinks },
+  { sectionLabel: "Accessories", links: accessoriesLinks },
+  { sectionLabel: "Brands", links: brandsLinks },
+];
 
-const featuredLinsk = [
+const womenFeaturedLinks = [
   {
     label: "New Arrivals",
     altText:
@@ -46,6 +56,23 @@ const featuredLinsk = [
       "Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.",
     imageUrl:
       "https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg",
+  },
+];
+
+const menFeaturedLinks = [
+  {
+    label: "New Arrivals",
+    altText:
+      "Drawstring top with elastic loop closure and textured interior padding.",
+    imageUrl:
+      "https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg",
+  },
+  {
+    label: "Artwork Tees",
+    altText:
+      "Three shirts in gray, white, and blue arranged on table with same line drawing of hands and shapes overlapping on front of shirt.",
+    imageUrl:
+      "https://tailwindui.com/img/ecommerce-images/category-page-02-image-card-06.jpg",
   },
 ];
 
@@ -118,7 +145,7 @@ const MobileNavigationMenu = forwardRef<
           </TabsList>
           <TabsContent value="women">
             <div className="grid grid-cols-2 gap-x-4">
-              {featuredLinsk.map(({ altText, imageUrl, label }, index) => (
+              {womenFeaturedLinks.map(({ altText, imageUrl, label }, index) => (
                 <div className="group relative text-sm" key={index}>
                   <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
                     <img
@@ -140,176 +167,77 @@ const MobileNavigationMenu = forwardRef<
                 </div>
               ))}
             </div>
-
-            <div className="mt-6">
-              <p
-                className="font-medium text-gray-900"
-                id="women-clothing-heading-mobile"
-              >
-                Clothing
-              </p>
-              <ul
-                aria-labelledby="women-clothing-heading-mobile"
-                className="mt-6 flex flex-col space-y-6"
-                role="list"
-              >
-                {fashionLinks.map((link, index) => (
-                  <li className="flow-root" key={index}>
-                    <a className="-m-2 block p-2 text-gray-500" href="#">
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="mt-6">
-              <p
-                className="font-medium text-gray-900"
-                id="women-accessories-heading-mobile"
-              >
-                Accessories
-              </p>
-              <ul
-                aria-labelledby="women-accessories-heading-mobile"
-                className="mt-6 flex flex-col space-y-6"
-                role="list"
-              >
-                {accessoriesLinks.map((link, index) => (
-                  <li className="flow-root" key={index}>
-                    <a className="-m-2 block p-2 text-gray-500" href="#">
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="mt-6">
-              <p
-                className="font-medium text-gray-900"
-                id="women-brands-heading-mobile"
-              >
-                Brands
-              </p>
-              <ul
-                aria-labelledby="women-brands-heading-mobile"
-                className="mt-6 flex flex-col space-y-6"
-                role="list"
-              >
-                {brandsLinks.map((link, index) => (
-                  <li className="flow-root" key={index}>
-                    <a className="-m-2 block p-2 text-gray-500" href="#">
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {womenMobileLinks.map(({ links, sectionLabel }, index) => (
+              <div className="mt-6" key={index}>
+                <p
+                  className="font-medium text-gray-900"
+                  id="women-clothing-heading-mobile"
+                >
+                  {sectionLabel}
+                </p>
+                <ul
+                  aria-labelledby="women-clothing-heading-mobile"
+                  className="mt-6 flex flex-col space-y-6"
+                  role="list"
+                >
+                  {links.map((link, index) => (
+                    <li className="flow-root" key={index}>
+                      <a className="-m-2 block p-2 text-gray-500" href="#">
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </TabsContent>
           <TabsContent value="men">
             <div className="grid grid-cols-2 gap-x-4">
-              <div className="group relative text-sm">
-                <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
-                  <img
-                    alt="Drawstring top with elastic loop closure and textured interior padding."
-                    className="object-cover object-center"
-                    src="https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg"
-                  />
+              {menFeaturedLinks.map(({ altText, imageUrl, label }, index) => (
+                <div className="group relative text-sm">
+                  <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
+                    <img
+                      alt={altText}
+                      className="object-cover object-center"
+                      src={imageUrl}
+                    />
+                  </div>
+                  <a className="mt-6 block font-medium text-gray-900" href="#">
+                    <span
+                      aria-hidden="true"
+                      className="absolute inset-0 z-10"
+                    ></span>
+                    {label}
+                  </a>
+                  <p aria-hidden="true" className="mt-1">
+                    Shop now
+                  </p>
                 </div>
-                <a className="mt-6 block font-medium text-gray-900" href="#">
-                  <span
-                    aria-hidden="true"
-                    className="absolute inset-0 z-10"
-                  ></span>
-                  New Arrivals
-                </a>
-                <p aria-hidden="true" className="mt-1">
-                  Shop now
+              ))}
+            </div>
+            {womenMobileLinks.map(({ links, sectionLabel }, index) => (
+              <div className="mt-6" key={index}>
+                <p
+                  className="font-medium text-gray-900"
+                  id="women-clothing-heading-mobile"
+                >
+                  {sectionLabel}
                 </p>
+                <ul
+                  aria-labelledby="women-clothing-heading-mobile"
+                  className="mt-6 flex flex-col space-y-6"
+                  role="list"
+                >
+                  {links.map((link, index) => (
+                    <li className="flow-root" key={index}>
+                      <a className="-m-2 block p-2 text-gray-500" href="#">
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <div className="group relative text-sm">
-                <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
-                  <img
-                    alt="Three shirts in gray, white, and blue arranged on table with same line drawing of hands and shapes overlapping on front of shirt."
-                    className="object-cover object-center"
-                    src="https://tailwindui.com/img/ecommerce-images/category-page-02-image-card-06.jpg"
-                  />
-                </div>
-                <a className="mt-6 block font-medium text-gray-900" href="#">
-                  <span
-                    aria-hidden="true"
-                    className="absolute inset-0 z-10"
-                  ></span>
-                  Artwork Tees
-                </a>
-                <p aria-hidden="true" className="mt-1">
-                  Shop now
-                </p>
-              </div>
-            </div>
-            <div className="mt-6">
-              <p
-                className="font-medium text-gray-900"
-                id="men-clothing-heading-mobile"
-              >
-                Clothing
-              </p>
-              <ul
-                aria-labelledby="men-clothing-heading-mobile"
-                className="mt-6 flex flex-col space-y-6"
-                role="list"
-              >
-                {fashionLinks.map((link, index) => (
-                  <li className="flow-root" key={index}>
-                    <a className="-m-2 block p-2 text-gray-500" href="#">
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="mt-6">
-              <p
-                className="font-medium text-gray-900"
-                id="men-accessories-heading-mobile"
-              >
-                Accessories
-              </p>
-              <ul
-                aria-labelledby="men-accessories-heading-mobile"
-                className="mt-6 flex flex-col space-y-6"
-                role="list"
-              >
-                {accessoriesLinks.map((link, index) => (
-                  <li className="flow-root" key={index}>
-                    <a className="-m-2 block p-2 text-gray-500" href="#">
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="mt-6">
-              <p
-                className="font-medium text-gray-900"
-                id="men-brands-heading-mobile"
-              >
-                Brands
-              </p>
-              <ul
-                aria-labelledby="men-brands-heading-mobile"
-                className="mt-6 flex flex-col space-y-6"
-                role="list"
-              >
-                {brandsLinks.map((link, index) => (
-                  <li className="flow-root" key={index}>
-                    <a className="-m-2 block p-2 text-gray-500" href="#">
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            ))}
           </TabsContent>
         </Tabs>
         <div className="mt-2"></div>
@@ -440,7 +368,7 @@ const DesktopNavigationMenu = forwardRef<
                     <div className="mx-auto max-w-7xl px-8">
                       <div className="grid grid-cols-2 gap-x-8 gap-y-10 py-6">
                         <div className="col-start-2 grid grid-cols-2 gap-x-8">
-                          {featuredLinsk.map(
+                          {womenFeaturedLinks.map(
                             ({ altText, imageUrl, label }, index) => (
                               <div className="group relative text-base sm:text-sm">
                                 <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
