@@ -39,7 +39,7 @@ export function CardWithForm() {
 
 export function ProductCard() {
   return (
-    <Card className="group relative w-[350px] hover:drop-shadow-lg">
+    <Card className="group relative max-w-[350px] hover:drop-shadow-lg">
       <CardHeader className="p-2">
         <div className="aspect-h-1 aspect-w-1 lg:aspect-none w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-80">
           <img
@@ -51,7 +51,7 @@ export function ProductCard() {
       </CardHeader>
       <div className="flex justify-between p-6">
         <div>
-          <CardTitle>
+          <CardTitle className="text-md">
             <a
               className="after:absolute after:bottom-0 after:left-0 after:right-0 after:top-0 after:z-10"
               href="#"
@@ -62,7 +62,7 @@ export function ProductCard() {
           </CardTitle>
           <p className="mt-1 text-sm text-gray-500">Aspen White</p>
         </div>
-        <p className="text-xl font-semibold leading-none tracking-tight">$35</p>
+        <p className="text-md font-semibold leading-none tracking-tight">$35</p>
       </div>
     </Card>
   );
