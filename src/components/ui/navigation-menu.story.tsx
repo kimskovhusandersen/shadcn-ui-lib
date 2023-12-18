@@ -62,7 +62,7 @@ const components: { description: string; href: string; title: string }[] = [
 
 export function NavigationMenuDemo() {
   return (
-    <NavigationMenu className="border-2 border-red-400">
+    <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
