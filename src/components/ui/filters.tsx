@@ -20,6 +20,8 @@ import {
   SheetTrigger,
 } from "./sheet";
 
+export const categories = ["Totes", "Backpacks", "Travel Bags", "Hip Bags"];
+
 const sortBy = [
   "Most Popular",
   "Best Rating",
@@ -61,31 +63,13 @@ const FiltersMobile = () => {
           <form className="mt-4 border-t border-gray-200">
             <h3 className="sr-only">Categories</h3>
             <ul className="px-2 py-3 font-medium text-gray-900" role="list">
-              <li>
-                <a className="block px-2 py-3" href="#">
-                  Totes
-                </a>
-              </li>
-              <li>
-                <a className="block px-2 py-3" href="#">
-                  Backpacks
-                </a>
-              </li>
-              <li>
-                <a className="block px-2 py-3" href="#">
-                  Travel Bags
-                </a>
-              </li>
-              <li>
-                <a className="block px-2 py-3" href="#">
-                  Hip Bags
-                </a>
-              </li>
-              <li>
-                <a className="block px-2 py-3" href="#">
-                  Laptop Sleeves
-                </a>
-              </li>
+              {categories.map((category) => (
+                <li key={category}>
+                  <a className="block px-2 py-3" href="#">
+                    {category}
+                  </a>
+                </li>
+              ))}
             </ul>
 
             <Accordion type="single">
@@ -470,21 +454,11 @@ export const Filters = () => {
                   className="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900"
                   role="list"
                 >
-                  <li>
-                    <a href="#">Totes</a>
-                  </li>
-                  <li>
-                    <a href="#">Backpacks</a>
-                  </li>
-                  <li>
-                    <a href="#">Travel Bags</a>
-                  </li>
-                  <li>
-                    <a href="#">Hip Bags</a>
-                  </li>
-                  <li>
-                    <a href="#">Laptop Sleeves</a>
-                  </li>
+                  {categories.map((category) => (
+                    <li key={category}>
+                      <a href="#">{category}</a>
+                    </li>
+                  ))}
                 </ul>
 
                 <Accordion type="single">
