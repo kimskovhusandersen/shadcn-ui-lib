@@ -457,115 +457,57 @@ const DesktopNavigationMenu = forwardRef<
                     <div className="mx-auto max-w-7xl px-8">
                       <div className="grid grid-cols-2 gap-x-8 gap-y-10 py-6">
                         <div className="col-start-2 grid grid-cols-2 gap-x-8">
-                          <div className="group relative text-base sm:text-sm">
-                            <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
-                              <img
-                                alt="Drawstring top with elastic loop closure and textured interior padding."
-                                className="object-cover object-center"
-                                src="https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg"
-                              />
-                            </div>
-                            <a
-                              className="mt-6 block font-medium text-gray-900"
-                              href="#"
-                            >
-                              <span
-                                aria-hidden="true"
-                                className="absolute inset-0 z-10"
-                              ></span>
-                              New Arrivals
-                            </a>
-                            <p aria-hidden="true" className="mt-1">
-                              Shop now
-                            </p>
-                          </div>
-                          <div className="group relative text-base sm:text-sm">
-                            <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
-                              <img
-                                alt="Three shirts in gray, white, and blue arranged on table with same line drawing of hands and shapes overlapping on front of shirt."
-                                className="object-cover object-center"
-                                src="https://tailwindui.com/img/ecommerce-images/category-page-02-image-card-06.jpg"
-                              />
-                            </div>
-                            <a
-                              className="mt-6 block font-medium text-gray-900"
-                              href="#"
-                            >
-                              <span
-                                aria-hidden="true"
-                                className="absolute inset-0 z-10"
-                              ></span>
-                              Artwork Tees
-                            </a>
-                            <p aria-hidden="true" className="mt-1">
-                              Shop now
-                            </p>
-                          </div>
+                          {menFeaturedLinks.map(
+                            ({ altText, imageUrl, label }, index) => (
+                              <div className="group relative text-base sm:text-sm">
+                                <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
+                                  <img
+                                    alt={altText}
+                                    className="object-cover object-center"
+                                    src={imageUrl}
+                                  />
+                                </div>
+                                <a
+                                  className="mt-6 block font-medium text-gray-900"
+                                  href="#"
+                                >
+                                  <span
+                                    aria-hidden="true"
+                                    className="absolute inset-0 z-10"
+                                  ></span>
+                                  {label}
+                                </a>
+                                <p aria-hidden="true" className="mt-1">
+                                  Shop now
+                                </p>
+                              </div>
+                            ),
+                          )}
                         </div>
                         <div className="row-start-1 grid grid-cols-3 gap-x-8 gap-y-10 text-sm">
-                          <div>
-                            <p
-                              className="font-medium text-gray-900"
-                              id="Clothing-heading"
-                            >
-                              Clothing
-                            </p>
-                            <ul
-                              aria-labelledby="Clothing-heading"
-                              className="mt-6 space-y-6 sm:mt-4 sm:space-y-4"
-                              role="list"
-                            >
-                              {fashionLinks.map((link, index) => (
-                                <li className="flex" key={index}>
-                                  <a className="hover:text-gray-800" href="#">
-                                    {link.label}
-                                  </a>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                          <div>
-                            <p
-                              className="font-medium text-gray-900"
-                              id="Accessories-heading"
-                            >
-                              Accessories
-                            </p>
-                            <ul
-                              aria-labelledby="Accessories-heading"
-                              className="mt-6 space-y-6 sm:mt-4 sm:space-y-4"
-                              role="list"
-                            >
-                              {accessoriesLinks.map((link, index) => (
-                                <li className="flex" key={index}>
-                                  <a className="hover:text-gray-800" href="#">
-                                    {link.label}
-                                  </a>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                          <div>
-                            <p
-                              className="font-medium text-gray-900"
-                              id="Brands-heading"
-                            >
-                              Brands
-                            </p>
-                            <ul
-                              aria-labelledby="Brands-heading"
-                              className="mt-6 space-y-6 sm:mt-4 sm:space-y-4"
-                              role="list"
-                            >
-                              {brandsLinks.map((link, index) => (
-                                <li className="flex" key={index}>
-                                  <a className="hover:text-gray-800" href="#">
-                                    {link.label}
-                                  </a>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
+                          {mensLinks.map(({ links, sectionLabel }, index) => (
+                            <div key={index}>
+                              <p
+                                className="font-medium text-gray-900"
+                                id={`heading-${index}`}
+                              >
+                                {sectionLabel}
+                              </p>
+                              <ul
+                                aria-labelledby={`heading-${index}`}
+                                className="mt-6 space-y-6 sm:mt-4 sm:space-y-4"
+                                role="list"
+                              >
+                                {links.map((link, index) => (
+                                  <li className="flex" key={index}>
+                                    <a className="hover:text-gray-800" href="#">
+                                      {link.label}
+                                    </a>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          ))}
                         </div>
                       </div>
                     </div>
