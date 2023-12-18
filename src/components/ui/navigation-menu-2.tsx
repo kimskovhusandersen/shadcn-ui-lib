@@ -76,6 +76,13 @@ const menFeaturedLinks = [
   },
 ];
 
+const menuLinks = [
+  { label: "Company" },
+  { label: "Stores" },
+  { label: "Sign in" },
+  { label: "Create account" },
+];
+
 const NavigationMenu = forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Root>
@@ -83,6 +90,92 @@ const NavigationMenu = forwardRef<
   <div className="bg-white">{children}</div>
 ));
 NavigationMenu.displayName = NavigationMenuPrimitive.Root.displayName;
+
+const LinkItem = ({ href = "#", label }: { href?: string; label: string }) => (
+  <li className="flow-root">
+    <a className="-m-2 block p-2 text-gray-500" href={href}>
+      {label}
+    </a>
+  </li>
+);
+
+const FeaturedLinkMobile = ({
+  altText,
+  imageUrl,
+  label,
+}: {
+  altText: string;
+  imageUrl: string;
+  label: string;
+}) => (
+  <div className="group relative text-sm">
+    <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
+      <img
+        alt={altText}
+        className="object-cover object-center"
+        src={imageUrl}
+      />
+    </div>
+    <a className="mt-6 block font-medium text-gray-900" href="#">
+      <span aria-hidden="true" className="absolute inset-0 z-10"></span>
+      {label}
+    </a>
+    <p aria-hidden="true" className="mt-1">
+      Shop now
+    </p>
+  </div>
+);
+
+const FeaturedLinkDesktop = ({
+  altText,
+  imageUrl,
+  label,
+}: {
+  altText: string;
+  imageUrl: string;
+  label: string;
+}) => (
+  <div className="group relative text-base sm:text-sm">
+    <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
+      <img
+        alt={altText}
+        className="object-cover object-center"
+        src={imageUrl}
+      />
+    </div>
+    <a className="mt-6 block font-medium text-gray-900" href="#">
+      <span aria-hidden="true" className="absolute inset-0 z-10"></span>
+      {label}
+    </a>
+    <p aria-hidden="true" className="mt-1">
+      Shop now
+    </p>
+  </div>
+);
+
+const CloseMobileMenuButton = () => (
+  <button
+    className="relative -m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400"
+    type="button"
+  >
+    <span className="absolute -inset-0.5"></span>
+    <span className="sr-only">Close menu</span>
+    <svg
+      aria-hidden="true"
+      className="h-6 w-6"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.5"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M6 18L18 6M6 6l12 12"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  </button>
+);
 
 const MobileNavigationMenu = forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Root>,
@@ -114,27 +207,7 @@ const MobileNavigationMenu = forwardRef<
   --> */}
       <div className="relative flex w-full max-w-xs flex-col overflow-y-auto bg-white pb-12 shadow-xl">
         <div className="flex px-4 pb-2 pt-5">
-          <button
-            className="relative -m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400"
-            type="button"
-          >
-            <span className="absolute -inset-0.5"></span>
-            <span className="sr-only">Close menu</span>
-            <svg
-              aria-hidden="true"
-              className="h-6 w-6"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M6 18L18 6M6 6l12 12"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-          </button>
+          <CloseMobileMenuButton />
         </div>
 
         {/* <!-- Links --> */}
@@ -145,26 +218,8 @@ const MobileNavigationMenu = forwardRef<
           </TabsList>
           <TabsContent value="women">
             <div className="grid grid-cols-2 gap-x-4">
-              {womenFeaturedLinks.map(({ altText, imageUrl, label }, index) => (
-                <div className="group relative text-sm" key={index}>
-                  <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
-                    <img
-                      alt={altText}
-                      className="object-cover object-center"
-                      src={imageUrl}
-                    />
-                  </div>
-                  <a className="mt-6 block font-medium text-gray-900" href="#">
-                    <span
-                      aria-hidden="true"
-                      className="absolute inset-0 z-10"
-                    ></span>
-                    {label}
-                  </a>
-                  <p aria-hidden="true" className="mt-1">
-                    Shop now
-                  </p>
-                </div>
+              {womenFeaturedLinks.map((link, index) => (
+                <FeaturedLinkMobile key={index} {...link} />
               ))}
             </div>
             {womenLinks.map(({ links, sectionLabel }, index) => (
@@ -181,11 +236,7 @@ const MobileNavigationMenu = forwardRef<
                   role="list"
                 >
                   {links.map((link, index) => (
-                    <li className="flow-root" key={index}>
-                      <a className="-m-2 block p-2 text-gray-500" href="#">
-                        {link.label}
-                      </a>
-                    </li>
+                    <LinkItem key={index} {...link} />
                   ))}
                 </ul>
               </div>
@@ -193,47 +244,25 @@ const MobileNavigationMenu = forwardRef<
           </TabsContent>
           <TabsContent value="men">
             <div className="grid grid-cols-2 gap-x-4">
-              {menFeaturedLinks.map(({ altText, imageUrl, label }, index) => (
-                <div className="group relative text-sm">
-                  <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
-                    <img
-                      alt={altText}
-                      className="object-cover object-center"
-                      src={imageUrl}
-                    />
-                  </div>
-                  <a className="mt-6 block font-medium text-gray-900" href="#">
-                    <span
-                      aria-hidden="true"
-                      className="absolute inset-0 z-10"
-                    ></span>
-                    {label}
-                  </a>
-                  <p aria-hidden="true" className="mt-1">
-                    Shop now
-                  </p>
-                </div>
+              {menFeaturedLinks.map((link, index) => (
+                <FeaturedLinkMobile key={index} {...link} />
               ))}
             </div>
             {mensLinks.map(({ links, sectionLabel }, index) => (
               <div className="mt-6" key={index}>
                 <p
                   className="font-medium text-gray-900"
-                  id="women-clothing-heading-mobile"
+                  id="men-clothing-heading-mobile"
                 >
                   {sectionLabel}
                 </p>
                 <ul
-                  aria-labelledby="women-clothing-heading-mobile"
+                  aria-labelledby="men-clothing-heading-mobile"
                   className="mt-6 flex flex-col space-y-6"
                   role="list"
                 >
                   {links.map((link, index) => (
-                    <li className="flow-root" key={index}>
-                      <a className="-m-2 block p-2 text-gray-500" href="#">
-                        {link.label}
-                      </a>
-                    </li>
+                    <LinkItem key={index} {...link} />
                   ))}
                 </ul>
               </div>
@@ -243,29 +272,22 @@ const MobileNavigationMenu = forwardRef<
         <div className="mt-2"></div>
 
         <div className="space-y-6 border-t border-gray-200 px-4 py-6">
-          <div className="flow-root">
-            <a className="-m-2 block p-2 font-medium text-gray-900" href="#">
-              Company
-            </a>
-          </div>
-          <div className="flow-root">
-            <a className="-m-2 block p-2 font-medium text-gray-900" href="#">
-              Stores
-            </a>
-          </div>
+          {menuLinks.splice(0, 1).map(({ label }, index) => (
+            <div className="flow-root">
+              <a className="-m-2 block p-2 font-medium text-gray-900" href="#">
+                {label}
+              </a>
+            </div>
+          ))}
         </div>
-
         <div className="space-y-6 border-t border-gray-200 px-4 py-6">
-          <div className="flow-root">
-            <a className="-m-2 block p-2 font-medium text-gray-900" href="#">
-              Sign in
-            </a>
-          </div>
-          <div className="flow-root">
-            <a className="-m-2 block p-2 font-medium text-gray-900" href="#">
-              Create account
-            </a>
-          </div>
+          {menuLinks.splice(2, 3).map(({ label }, index) => (
+            <div className="flow-root">
+              <a className="-m-2 block p-2 font-medium text-gray-900" href="#">
+                {label}
+              </a>
+            </div>
+          ))}
         </div>
 
         <div className="border-t border-gray-200 px-4 py-6">
@@ -368,32 +390,9 @@ const DesktopNavigationMenu = forwardRef<
                     <div className="mx-auto max-w-7xl px-8">
                       <div className="grid grid-cols-2 gap-x-8 gap-y-10 py-6">
                         <div className="col-start-2 grid grid-cols-2 gap-x-8">
-                          {womenFeaturedLinks.map(
-                            ({ altText, imageUrl, label }, index) => (
-                              <div className="group relative text-base sm:text-sm">
-                                <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
-                                  <img
-                                    alt={altText}
-                                    className="object-cover object-center"
-                                    src={imageUrl}
-                                  />
-                                </div>
-                                <a
-                                  className="mt-6 block font-medium text-gray-900"
-                                  href="#"
-                                >
-                                  <span
-                                    aria-hidden="true"
-                                    className="absolute inset-0 z-10"
-                                  ></span>
-                                  {label}
-                                </a>
-                                <p aria-hidden="true" className="mt-1">
-                                  Shop now
-                                </p>
-                              </div>
-                            ),
-                          )}
+                          {womenFeaturedLinks.map((link, index) => (
+                            <FeaturedLinkDesktop key={index} {...link} />
+                          ))}
                         </div>
                         <div className="row-start-1 grid grid-cols-3 gap-x-8 gap-y-10 text-sm">
                           {womenLinks.map(({ links, sectionLabel }, index) => (
@@ -457,32 +456,9 @@ const DesktopNavigationMenu = forwardRef<
                     <div className="mx-auto max-w-7xl px-8">
                       <div className="grid grid-cols-2 gap-x-8 gap-y-10 py-6">
                         <div className="col-start-2 grid grid-cols-2 gap-x-8">
-                          {menFeaturedLinks.map(
-                            ({ altText, imageUrl, label }, index) => (
-                              <div className="group relative text-base sm:text-sm">
-                                <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
-                                  <img
-                                    alt={altText}
-                                    className="object-cover object-center"
-                                    src={imageUrl}
-                                  />
-                                </div>
-                                <a
-                                  className="mt-6 block font-medium text-gray-900"
-                                  href="#"
-                                >
-                                  <span
-                                    aria-hidden="true"
-                                    className="absolute inset-0 z-10"
-                                  ></span>
-                                  {label}
-                                </a>
-                                <p aria-hidden="true" className="mt-1">
-                                  Shop now
-                                </p>
-                              </div>
-                            ),
-                          )}
+                          {menFeaturedLinks.map((link, index) => (
+                            <FeaturedLinkDesktop key={index} {...link} />
+                          ))}
                         </div>
                         <div className="row-start-1 grid grid-cols-3 gap-x-8 gap-y-10 text-sm">
                           {mensLinks.map(({ links, sectionLabel }, index) => (
