@@ -1,7 +1,37 @@
+import { cn } from "@/lib/utils";
 import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
 import { forwardRef } from "react";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from "./navigation-menu";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./tabs";
 import { TopBanner } from "./top-banner";
+
+interface Link {
+  label: string;
+}
+interface FeaturedLink {
+  altText: string;
+  imageUrl: string;
+  label: string;
+}
+
+interface SectionLink {
+  links: Link[];
+  sectionLabel: string;
+}
+
+interface TabContentProps {
+  featuredLinks: FeaturedLink[];
+  links: SectionLink[];
+  value: string;
+}
 
 const fashionLinks = [
   { label: "Tops" },
@@ -31,16 +61,6 @@ const brandsLinks = [
   { label: "Counterfeit" },
   { label: "Significant Other" },
 ];
-const womenLinks = [
-  { sectionLabel: "Women's Clothing", links: fashionLinks },
-  { sectionLabel: "Accessories", links: accessoriesLinks },
-  { sectionLabel: "Brands", links: brandsLinks },
-];
-const mensLinks = [
-  { sectionLabel: "Men's Clothing", links: fashionLinks },
-  { sectionLabel: "Accessories", links: accessoriesLinks },
-  { sectionLabel: "Brands", links: brandsLinks },
-];
 
 const womenFeaturedLinks = [
   {
@@ -57,6 +77,12 @@ const womenFeaturedLinks = [
     imageUrl:
       "https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg",
   },
+];
+
+const womenLinks = [
+  { sectionLabel: "Women's Clothing", links: fashionLinks },
+  { sectionLabel: "Accessories", links: accessoriesLinks },
+  { sectionLabel: "Brands", links: brandsLinks },
 ];
 
 const menFeaturedLinks = [
@@ -76,6 +102,12 @@ const menFeaturedLinks = [
   },
 ];
 
+const mensLinks = [
+  { sectionLabel: "Men's Clothing", links: fashionLinks },
+  { sectionLabel: "Accessories", links: accessoriesLinks },
+  { sectionLabel: "Brands", links: brandsLinks },
+];
+
 const menuLinks = [
   { label: "Company" },
   { label: "Stores" },
@@ -83,13 +115,14 @@ const menuLinks = [
   { label: "Create account" },
 ];
 
-const NavigationMenu = forwardRef<
+const NavigationMenuV2 = forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Root>
 >(({ children, className, ...props }, ref) => (
   <div className="bg-white">{children}</div>
 ));
-NavigationMenu.displayName = NavigationMenuPrimitive.Root.displayName;
+
+NavigationMenuV2.displayName = NavigationMenuPrimitive.Root.displayName;
 
 const LinkItem = ({ href = "#", label }: { href?: string; label: string }) => (
   <li className="flow-root">
@@ -126,15 +159,7 @@ const FeaturedLinkMobile = ({
   </div>
 );
 
-const FeaturedLinkDesktop = ({
-  altText,
-  imageUrl,
-  label,
-}: {
-  altText: string;
-  imageUrl: string;
-  label: string;
-}) => (
+const FeaturedLinkDesktop = ({ altText, imageUrl, label }: FeaturedLink) => (
   <div className="group relative text-base sm:text-sm">
     <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
       <img
@@ -177,6 +202,78 @@ const CloseMobileMenuButton = () => (
   </button>
 );
 
+const OpenMobileMenuButton = () => (
+  <button
+    className="relative rounded-md bg-white p-2 text-gray-400 lg:hidden"
+    type="button"
+  >
+    <span className="absolute -inset-0.5"></span>
+    <span className="sr-only">Open menu</span>
+    <svg
+      aria-hidden="true"
+      className="h-6 w-6"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.5"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  </button>
+);
+
+const Logo = () => (
+  <div className="ml-4 flex lg:ml-0">
+    <a href="#">
+      <span className="sr-only">Your Company</span>
+      <img
+        alt=""
+        className="h-8 w-auto"
+        src="https://tailwindui.com/img/logos/mark.svg?shade=600"
+      />
+    </a>
+  </div>
+);
+
+const TabContent: React.FC<TabContentProps> = ({
+  featuredLinks,
+  links,
+  value,
+}) => {
+  return (
+    <TabsContent value={value}>
+      <div className="grid grid-cols-2 gap-x-4">
+        {featuredLinks.map((link, index) => (
+          <FeaturedLinkMobile key={index} {...link} />
+        ))}
+      </div>
+      {links.map(({ links, sectionLabel }, index) => (
+        <div className="mt-6" key={index}>
+          <p
+            className={`font-medium text-gray-900`}
+            id={`${value}-clothing-heading-mobile`}
+          >
+            {sectionLabel}
+          </p>
+          <ul
+            aria-labelledby={`${value}-clothing-heading-mobile`}
+            className="mt-6 flex flex-col space-y-6"
+            role="list"
+          >
+            {links.map((link, index) => (
+              <LinkItem key={index} {...link} />
+            ))}
+          </ul>
+        </div>
+      ))}
+    </TabsContent>
+  );
+};
+
 const MobileNavigationMenu = forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Root>
@@ -216,58 +313,16 @@ const MobileNavigationMenu = forwardRef<
             <TabsTrigger value="women">Women</TabsTrigger>
             <TabsTrigger value="men">Men</TabsTrigger>
           </TabsList>
-          <TabsContent value="women">
-            <div className="grid grid-cols-2 gap-x-4">
-              {womenFeaturedLinks.map((link, index) => (
-                <FeaturedLinkMobile key={index} {...link} />
-              ))}
-            </div>
-            {womenLinks.map(({ links, sectionLabel }, index) => (
-              <div className="mt-6" key={index}>
-                <p
-                  className="font-medium text-gray-900"
-                  id="women-clothing-heading-mobile"
-                >
-                  {sectionLabel}
-                </p>
-                <ul
-                  aria-labelledby="women-clothing-heading-mobile"
-                  className="mt-6 flex flex-col space-y-6"
-                  role="list"
-                >
-                  {links.map((link, index) => (
-                    <LinkItem key={index} {...link} />
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </TabsContent>
-          <TabsContent value="men">
-            <div className="grid grid-cols-2 gap-x-4">
-              {menFeaturedLinks.map((link, index) => (
-                <FeaturedLinkMobile key={index} {...link} />
-              ))}
-            </div>
-            {mensLinks.map(({ links, sectionLabel }, index) => (
-              <div className="mt-6" key={index}>
-                <p
-                  className="font-medium text-gray-900"
-                  id="men-clothing-heading-mobile"
-                >
-                  {sectionLabel}
-                </p>
-                <ul
-                  aria-labelledby="men-clothing-heading-mobile"
-                  className="mt-6 flex flex-col space-y-6"
-                  role="list"
-                >
-                  {links.map((link, index) => (
-                    <LinkItem key={index} {...link} />
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </TabsContent>
+          <TabContent
+            featuredLinks={womenFeaturedLinks}
+            links={womenLinks}
+            value="women"
+          />
+          <TabContent
+            featuredLinks={menFeaturedLinks}
+            links={mensLinks}
+            value="men"
+          />
         </Tabs>
         <div className="mt-2"></div>
 
@@ -309,6 +364,131 @@ const MobileNavigationMenu = forwardRef<
 ));
 MobileNavigationMenu.displayName = "MobileNavigationMenu";
 
+const ListItem = forwardRef<
+  React.ElementRef<"a">,
+  React.ComponentPropsWithoutRef<"a">
+>(({ children, className, title, ...props }, ref) => {
+  return (
+    <li>
+      <NavigationMenuLink asChild>
+        <a
+          className={cn(
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            className,
+          )}
+          ref={ref}
+          {...props}
+        >
+          <div className="text-sm font-medium leading-none">{title}</div>
+          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+            {children}
+          </p>
+        </a>
+      </NavigationMenuLink>
+    </li>
+  );
+});
+ListItem.displayName = "ListItem";
+
+const FlyoutMenus = () => (
+  <NavigationMenu>
+    <NavigationMenuList>
+      <NavigationMenuItem>
+        <NavigationMenuTrigger>Women</NavigationMenuTrigger>
+        <NavigationMenuContent>
+          <div className="relative w-[400px] bg-white md:w-[500px] lg:w-[600px]">
+            <div className="mx-auto max-w-7xl px-8">
+              <div className="grid grid-cols-2 gap-x-8 gap-y-10 py-6">
+                <div className="col-start-2 grid grid-cols-2 gap-x-8">
+                  {womenFeaturedLinks.map((link, index) => (
+                    <FeaturedLinkDesktop key={index} {...link} />
+                  ))}
+                </div>
+                <div className="row-start-1 grid grid-cols-3 gap-x-8 gap-y-10 text-sm">
+                  {womenLinks.map(({ links, sectionLabel }, index) => (
+                    <div key={index}>
+                      <p
+                        className="font-medium text-gray-900"
+                        id={`heading-${index}`}
+                      >
+                        {sectionLabel}
+                      </p>
+                      <ul
+                        aria-labelledby={`heading-${index}`}
+                        className="mt-6 space-y-6 sm:mt-4 sm:space-y-4"
+                        role="list"
+                      >
+                        {links.map((link, index) => (
+                          <li className="flex" key={index}>
+                            <a className="hover:text-gray-800" href="#">
+                              {link.label}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </NavigationMenuContent>
+      </NavigationMenuItem>
+      <NavigationMenuItem>
+        <NavigationMenuTrigger>Men</NavigationMenuTrigger>
+        <NavigationMenuContent>
+          <div className="relative w-[400px] bg-white md:w-[500px] lg:w-[600px]">
+            <div className="mx-auto max-w-7xl px-8">
+              <div className="grid grid-cols-2 gap-x-8 gap-y-10 py-6">
+                <div className="col-start-2 grid grid-cols-2 gap-x-8">
+                  {menFeaturedLinks.map((link, index) => (
+                    <FeaturedLinkDesktop key={index} {...link} />
+                  ))}
+                </div>
+                <div className="row-start-1 grid grid-cols-3 gap-x-8 gap-y-10 text-sm">
+                  {mensLinks.map(({ links, sectionLabel }, index) => (
+                    <div key={index}>
+                      <p
+                        className="font-medium text-gray-900"
+                        id={`heading-${index}`}
+                      >
+                        {sectionLabel}
+                      </p>
+                      <ul
+                        aria-labelledby={`heading-${index}`}
+                        className="mt-6 space-y-6 sm:mt-4 sm:space-y-4"
+                        role="list"
+                      >
+                        {links.map((link, index) => (
+                          <li className="flex" key={index}>
+                            <a className="hover:text-gray-800" href="#">
+                              {link.label}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </NavigationMenuContent>
+      </NavigationMenuItem>
+      <NavigationMenuItem>
+        <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+          Company
+        </NavigationMenuLink>
+      </NavigationMenuItem>
+      <NavigationMenuItem>
+        <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+          Store
+        </NavigationMenuLink>
+      </NavigationMenuItem>
+    </NavigationMenuList>
+  </NavigationMenu>
+);
+
 const DesktopNavigationMenu = forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Root>
@@ -319,190 +499,13 @@ const DesktopNavigationMenu = forwardRef<
     <nav aria-label="Top" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div className="border-b border-gray-200">
         <div className="flex h-16 items-center">
-          {/* <!-- Mobile menu toggle, controls the 'mobileMenuOpen' state. --> */}
-          <button
-            className="relative rounded-md bg-white p-2 text-gray-400 lg:hidden"
-            type="button"
-          >
-            <span className="absolute -inset-0.5"></span>
-            <span className="sr-only">Open menu</span>
-            <svg
-              aria-hidden="true"
-              className="h-6 w-6"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-          </button>
-
-          {/* <!-- Logo --> */}
-          <div className="ml-4 flex lg:ml-0">
-            <a href="#">
-              <span className="sr-only">Your Company</span>
-              <img
-                alt=""
-                className="h-8 w-auto"
-                src="https://tailwindui.com/img/logos/mark.svg?shade=600"
-              />
-            </a>
-          </div>
+          <OpenMobileMenuButton />
+          <Logo />
 
           {/* <!-- Flyout menus --> */}
-          <div className="hidden lg:ml-8 lg:block lg:self-stretch">
+          <div className="hidden border-2 border-red-400 lg:ml-8 lg:block lg:self-stretch">
             <div className="flex h-full space-x-8">
-              <div className="flex">
-                <div className="relative flex">
-                  {/* <!-- Item active: "border-indigo-600 text-indigo-600", Item inactive: "border-transparent text-gray-700 hover:text-gray-800" --> */}
-                  <button
-                    aria-expanded="false"
-                    className="relative z-10 -mb-px flex items-center border-b-2 border-transparent pt-px text-sm font-medium text-gray-700 transition-colors duration-200 ease-out hover:text-gray-800"
-                    type="button"
-                  >
-                    Women
-                  </button>
-                </div>
-
-                {/* <!--
-                'Women' flyout menu, show/hide based on flyout menu state.
-
-                Entering: "transition ease-out duration-200"
-                  From: "opacity-0"
-                  To: "opacity-100"
-                Leaving: "transition ease-in duration-150"
-                  From: "opacity-100"
-                  To: "opacity-0"
-              --> */}
-                <div className="absolute inset-x-0 top-full text-sm text-gray-500">
-                  {/* <!-- Presentational element used to render the bottom shadow, if we put the shadow on the actual panel it pokes out the top, so we use this shorter element to hide the top of the shadow --> */}
-                  <div
-                    aria-hidden="true"
-                    className="absolute inset-0 top-1/2 bg-white shadow"
-                  ></div>
-
-                  <div className="relative bg-white">
-                    <div className="mx-auto max-w-7xl px-8">
-                      <div className="grid grid-cols-2 gap-x-8 gap-y-10 py-6">
-                        <div className="col-start-2 grid grid-cols-2 gap-x-8">
-                          {womenFeaturedLinks.map((link, index) => (
-                            <FeaturedLinkDesktop key={index} {...link} />
-                          ))}
-                        </div>
-                        <div className="row-start-1 grid grid-cols-3 gap-x-8 gap-y-10 text-sm">
-                          {womenLinks.map(({ links, sectionLabel }, index) => (
-                            <div key={index}>
-                              <p
-                                className="font-medium text-gray-900"
-                                id={`heading-${index}`}
-                              >
-                                {sectionLabel}
-                              </p>
-                              <ul
-                                aria-labelledby={`heading-${index}`}
-                                className="mt-6 space-y-6 sm:mt-4 sm:space-y-4"
-                                role="list"
-                              >
-                                {links.map((link, index) => (
-                                  <li className="flex" key={index}>
-                                    <a className="hover:text-gray-800" href="#">
-                                      {link.label}
-                                    </a>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="flex">
-                <div className="relative flex">
-                  {/* <!-- Item active: "border-indigo-600 text-indigo-600", Item inactive: "border-transparent text-gray-700 hover:text-gray-800" --> */}
-                  <button
-                    aria-expanded="false"
-                    className="relative z-10 -mb-px flex items-center border-b-2 border-transparent pt-px text-sm font-medium text-gray-700 transition-colors duration-200 ease-out hover:text-gray-800"
-                    type="button"
-                  >
-                    Men
-                  </button>
-                </div>
-
-                {/* <!--
-                'Men' flyout menu, show/hide based on flyout menu state.
-
-                Entering: "transition ease-out duration-200"
-                  From: "opacity-0"
-                  To: "opacity-100"
-                Leaving: "transition ease-in duration-150"
-                  From: "opacity-100"
-                  To: "opacity-0"
-              --> */}
-                <div className="absolute inset-x-0 top-full text-sm text-gray-500">
-                  {/* <!-- Presentational element used to render the bottom shadow, if we put the shadow on the actual panel it pokes out the top, so we use this shorter element to hide the top of the shadow --> */}
-                  <div
-                    aria-hidden="true"
-                    className="absolute inset-0 top-1/2 bg-white shadow"
-                  ></div>
-                  <div className="relative bg-white">
-                    <div className="mx-auto max-w-7xl px-8">
-                      <div className="grid grid-cols-2 gap-x-8 gap-y-10 py-6">
-                        <div className="col-start-2 grid grid-cols-2 gap-x-8">
-                          {menFeaturedLinks.map((link, index) => (
-                            <FeaturedLinkDesktop key={index} {...link} />
-                          ))}
-                        </div>
-                        <div className="row-start-1 grid grid-cols-3 gap-x-8 gap-y-10 text-sm">
-                          {mensLinks.map(({ links, sectionLabel }, index) => (
-                            <div key={index}>
-                              <p
-                                className="font-medium text-gray-900"
-                                id={`heading-${index}`}
-                              >
-                                {sectionLabel}
-                              </p>
-                              <ul
-                                aria-labelledby={`heading-${index}`}
-                                className="mt-6 space-y-6 sm:mt-4 sm:space-y-4"
-                                role="list"
-                              >
-                                {links.map((link, index) => (
-                                  <li className="flex" key={index}>
-                                    <a className="hover:text-gray-800" href="#">
-                                      {link.label}
-                                    </a>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <a
-                className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
-                href="#"
-              >
-                Company
-              </a>
-              <a
-                className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
-                href="#"
-              >
-                Stores
-              </a>
+              <FlyoutMenus />
             </div>
           </div>
 
@@ -590,4 +593,8 @@ const DesktopNavigationMenu = forwardRef<
 ));
 DesktopNavigationMenu.displayName = "DesktopNavigationMenu";
 
-export { DesktopNavigationMenu, MobileNavigationMenu, NavigationMenu };
+export {
+  DesktopNavigationMenu,
+  MobileNavigationMenu,
+  NavigationMenuV2 as NavigationMenu,
+};
