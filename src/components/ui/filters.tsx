@@ -776,7 +776,6 @@ export const Filters = () => {
                 </Accordion>
               </form>
 
-              {/* <!-- Product grid --> */}
               <div className="col-span-3">
                 {/* <!-- Your content --> */}
 
