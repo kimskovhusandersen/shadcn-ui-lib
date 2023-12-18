@@ -31,13 +31,13 @@ const brandsLinks = [
   { label: "Counterfeit" },
   { label: "Significant Other" },
 ];
-const womenMobileLinks = [
-  { sectionLabel: "Clothing", links: fashionLinks },
+const womenLinks = [
+  { sectionLabel: "Women's Clothing", links: fashionLinks },
   { sectionLabel: "Accessories", links: accessoriesLinks },
   { sectionLabel: "Brands", links: brandsLinks },
 ];
-const menMobileLinks = [
-  { sectionLabel: "Clothing", links: fashionLinks },
+const mensLinks = [
+  { sectionLabel: "Men's Clothing", links: fashionLinks },
   { sectionLabel: "Accessories", links: accessoriesLinks },
   { sectionLabel: "Brands", links: brandsLinks },
 ];
@@ -167,7 +167,7 @@ const MobileNavigationMenu = forwardRef<
                 </div>
               ))}
             </div>
-            {womenMobileLinks.map(({ links, sectionLabel }, index) => (
+            {womenLinks.map(({ links, sectionLabel }, index) => (
               <div className="mt-6" key={index}>
                 <p
                   className="font-medium text-gray-900"
@@ -215,7 +215,7 @@ const MobileNavigationMenu = forwardRef<
                 </div>
               ))}
             </div>
-            {menMobileLinks.map(({ links, sectionLabel }, index) => (
+            {mensLinks.map(({ links, sectionLabel }, index) => (
               <div className="mt-6" key={index}>
                 <p
                   className="font-medium text-gray-900"
@@ -396,69 +396,29 @@ const DesktopNavigationMenu = forwardRef<
                           )}
                         </div>
                         <div className="row-start-1 grid grid-cols-3 gap-x-8 gap-y-10 text-sm">
-                          <div>
-                            <p
-                              className="font-medium text-gray-900"
-                              id="Clothing-heading"
-                            >
-                              Clothing
-                            </p>
-                            <ul
-                              aria-labelledby="Clothing-heading"
-                              className="mt-6 space-y-6 sm:mt-4 sm:space-y-4"
-                              role="list"
-                            >
-                              {fashionLinks.map((link, index) => (
-                                <li className="flex" key={index}>
-                                  <a className="hover:text-gray-800" href="#">
-                                    {link.label}
-                                  </a>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                          <div>
-                            <p
-                              className="font-medium text-gray-900"
-                              id="Accessories-heading"
-                            >
-                              Accessories
-                            </p>
-                            <ul
-                              aria-labelledby="Accessories-heading"
-                              className="mt-6 space-y-6 sm:mt-4 sm:space-y-4"
-                              role="list"
-                            >
-                              {accessoriesLinks.map((link, index) => (
-                                <li className="flex" key={index}>
-                                  <a className="hover:text-gray-800" href="#">
-                                    {link.label}
-                                  </a>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                          <div>
-                            <p
-                              className="font-medium text-gray-900"
-                              id="Brands-heading"
-                            >
-                              Brands
-                            </p>
-                            <ul
-                              aria-labelledby="Brands-heading"
-                              className="mt-6 space-y-6 sm:mt-4 sm:space-y-4"
-                              role="list"
-                            >
-                              {brandsLinks.map((link, index) => (
-                                <li className="flex" key={index}>
-                                  <a className="hover:text-gray-800" href="#">
-                                    {link.label}
-                                  </a>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
+                          {womenLinks.map(({ links, sectionLabel }, index) => (
+                            <div key={index}>
+                              <p
+                                className="font-medium text-gray-900"
+                                id={`heading-${index}`}
+                              >
+                                {sectionLabel}
+                              </p>
+                              <ul
+                                aria-labelledby={`heading-${index}`}
+                                className="mt-6 space-y-6 sm:mt-4 sm:space-y-4"
+                                role="list"
+                              >
+                                {links.map((link, index) => (
+                                  <li className="flex" key={index}>
+                                    <a className="hover:text-gray-800" href="#">
+                                      {link.label}
+                                    </a>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          ))}
                         </div>
                       </div>
                     </div>
