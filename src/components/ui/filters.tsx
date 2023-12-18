@@ -22,12 +22,30 @@ import {
 
 export const categories = ["Totes", "Backpacks", "Travel Bags", "Hip Bags"];
 
+const colorFilters = [
+  { name: "color[]", value: "white", label: "White" },
+  { name: "color[]", value: "beige", label: "Beige" },
+  { name: "color[]", value: "blue", label: "Blue" },
+  { name: "color[]", value: "brown", label: "Brown" },
+  { name: "color[]", value: "green", label: "Green" },
+  { name: "color[]", value: "purple", label: "Purple" },
+];
+
 const sortBy = [
   "Most Popular",
   "Best Rating",
   "Newest",
   "Price: Low to High",
   "Price: High to Low",
+];
+
+const sizeFilters = [
+  { name: "size[]", value: "2l", label: "2L" },
+  { name: "size[]", value: "6l", label: "6L" },
+  { name: "size[]", value: "12l", label: "12L" },
+  { name: "size[]", value: "18l", label: "18L" },
+  { name: "size[]", value: "20l", label: "20L" },
+  { name: "size[]", value: "40l", label: "40L" },
 ];
 
 const FiltersMobile = () => {
@@ -108,67 +126,25 @@ const FiltersMobile = () => {
                           Beige
                         </label>
                       </div>
-                      <div className="flex items-center">
-                        <input
-                          checked
-                          className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                          id="filter-color-2"
-                          name="color[]"
-                          type="checkbox"
-                          value="blue"
-                        />
-                        <label
-                          className="ml-3 text-sm text-gray-600"
-                          htmlFor="filter-color-2"
-                        >
-                          Blue
-                        </label>
-                      </div>
-                      <div className="flex items-center">
-                        <input
-                          className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                          id="filter-color-3"
-                          name="color[]"
-                          type="checkbox"
-                          value="brown"
-                        />
-                        <label
-                          className="ml-3 text-sm text-gray-600"
-                          htmlFor="filter-color-3"
-                        >
-                          Brown
-                        </label>
-                      </div>
-                      <div className="flex items-center">
-                        <input
-                          className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                          id="filter-color-4"
-                          name="color[]"
-                          type="checkbox"
-                          value="green"
-                        />
-                        <label
-                          className="ml-3 text-sm text-gray-600"
-                          htmlFor="filter-color-4"
-                        >
-                          Green
-                        </label>
-                      </div>
-                      <div className="flex items-center">
-                        <input
-                          className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                          id="filter-color-5"
-                          name="color[]"
-                          type="checkbox"
-                          value="purple"
-                        />
-                        <label
-                          className="ml-3 text-sm text-gray-600"
-                          htmlFor="filter-color-5"
-                        >
-                          Purple
-                        </label>
-                      </div>
+                      {colorFilters.map((filter, index) => (
+                        <div className="flex items-center">
+                          <input
+                            checked
+                            className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                            id={`filter-color-${index}`}
+                            key={filter.value}
+                            name={filter.name}
+                            type="checkbox"
+                            value={filter.value}
+                          />
+                          <label
+                            className="ml-3 text-sm text-gray-600"
+                            htmlFor={`filter-color-${index}`}
+                          >
+                            {filter.label}
+                          </label>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </AccordionContent>
@@ -263,97 +239,23 @@ const FiltersMobile = () => {
                 <AccordionContent>
                   <div className="pt-6" id="filter-section-2">
                     <div className="space-y-4">
-                      <div className="flex items-center">
-                        <input
-                          className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                          id="filter-size-0"
-                          name="size[]"
-                          type="checkbox"
-                          value="2l"
-                        />
-                        <label
-                          className="ml-3 text-sm text-gray-600"
-                          htmlFor="filter-size-0"
-                        >
-                          2L
-                        </label>
-                      </div>
-                      <div className="flex items-center">
-                        <input
-                          className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                          id="filter-size-1"
-                          name="size[]"
-                          type="checkbox"
-                          value="6l"
-                        />
-                        <label
-                          className="ml-3 text-sm text-gray-600"
-                          htmlFor="filter-size-1"
-                        >
-                          6L
-                        </label>
-                      </div>
-                      <div className="flex items-center">
-                        <input
-                          className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                          id="filter-size-2"
-                          name="size[]"
-                          type="checkbox"
-                          value="12l"
-                        />
-                        <label
-                          className="ml-3 text-sm text-gray-600"
-                          htmlFor="filter-size-2"
-                        >
-                          12L
-                        </label>
-                      </div>
-                      <div className="flex items-center">
-                        <input
-                          className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                          id="filter-size-3"
-                          name="size[]"
-                          type="checkbox"
-                          value="18l"
-                        />
-                        <label
-                          className="ml-3 text-sm text-gray-600"
-                          htmlFor="filter-size-3"
-                        >
-                          18L
-                        </label>
-                      </div>
-                      <div className="flex items-center">
-                        <input
-                          className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                          id="filter-size-4"
-                          name="size[]"
-                          type="checkbox"
-                          value="20l"
-                        />
-                        <label
-                          className="ml-3 text-sm text-gray-600"
-                          htmlFor="filter-size-4"
-                        >
-                          20L
-                        </label>
-                      </div>
-                      <div className="flex items-center">
-                        <input
-                          checked
-                          className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                          id="filter-size-5"
-                          name="size[]"
-                          type="checkbox"
-                          value="40l"
-                        />
-                        <label
-                          className="ml-3 text-sm text-gray-600"
-                          htmlFor="filter-size-5"
-                        >
-                          40L
-                        </label>
-                      </div>
+                      {sizeFilters.map((filter, index) => (
+                        <div className="flex items-center" key={filter.value}>
+                          <input
+                            className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                            id={`filter-size-${index}`}
+                            name={filter.name}
+                            type="checkbox"
+                            value={filter.value}
+                          />
+                          <label
+                            className="ml-3 text-sm text-gray-600"
+                            htmlFor={`filter-size-${index}`}
+                          >
+                            {filter.label}
+                          </label>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </AccordionContent>
