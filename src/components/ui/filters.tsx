@@ -22,6 +22,14 @@ import {
 
 export const categories = ["Totes", "Backpacks", "Travel Bags", "Hip Bags"];
 
+const sortBy = [
+  "Most Popular",
+  "Best Rating",
+  "Newest",
+  "Price: Low to High",
+  "Price: High to Low",
+];
+
 const colorFilters = [
   { name: "color[]", value: "white", label: "White" },
   { name: "color[]", value: "beige", label: "Beige" },
@@ -29,14 +37,6 @@ const colorFilters = [
   { name: "color[]", value: "brown", label: "Brown" },
   { name: "color[]", value: "green", label: "Green" },
   { name: "color[]", value: "purple", label: "Purple" },
-];
-
-const sortBy = [
-  "Most Popular",
-  "Best Rating",
-  "Newest",
-  "Price: Low to High",
-  "Price: High to Low",
 ];
 
 const sizeFilters = [
