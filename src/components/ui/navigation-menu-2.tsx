@@ -10,6 +10,13 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "./navigation-menu";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "./sheet";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./tabs";
 import { TopBanner } from "./top-banner";
 
@@ -178,30 +185,6 @@ const FeaturedLinkDesktop = ({ altText, imageUrl, label }: FeaturedLink) => (
   </div>
 );
 
-const CloseMobileMenuButton = () => (
-  <button
-    className="relative -m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400"
-    type="button"
-  >
-    <span className="absolute -inset-0.5"></span>
-    <span className="sr-only">Close menu</span>
-    <svg
-      aria-hidden="true"
-      className="h-6 w-6"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="1.5"
-      viewBox="0 0 24 24"
-    >
-      <path
-        d="M6 18L18 6M6 6l12 12"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      />
-    </svg>
-  </button>
-);
-
 const OpenMobileMenuButton = () => (
   <button
     className="relative rounded-md bg-white p-2 text-gray-400 lg:hidden"
@@ -278,52 +261,31 @@ const MobileNavigationMenu = forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Root>
 >(({ children, className, ...props }, ref) => (
-  <div aria-modal="true" className="relative z-40 lg:hidden" role="dialog">
-    {/* <!--
-  Off-canvas menu backdrop, show/hide based on off-canvas menu state.
-
-  Entering: "transition-opacity ease-linear duration-300"
-    From: "opacity-0"
-    To: "opacity-100"
-  Leaving: "transition-opacity ease-linear duration-300"
-    From: "opacity-100"
-    To: "opacity-0"
---> */}
-    <div className="fixed inset-0 bg-black bg-opacity-25"></div>
-
-    <div className="fixed inset-0 z-40 flex">
-      {/* <!--
-    Off-canvas menu, show/hide based on off-canvas menu state.
-
-    Entering: "transition ease-in-out duration-300 transform"
-      From: "-translate-x-full"
-      To: "translate-x-0"
-    Leaving: "transition ease-in-out duration-300 transform"
-      From: "translate-x-0"
-      To: "-translate-x-full"
-  --> */}
-      <div className="relative flex w-full max-w-xs flex-col overflow-y-auto bg-white pb-12 shadow-xl">
-        <div className="flex px-4 pb-2 pt-5">
-          <CloseMobileMenuButton />
-        </div>
-
-        {/* <!-- Links --> */}
-        <Tabs className="px-4" defaultValue="women">
-          <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="women">Women</TabsTrigger>
-            <TabsTrigger value="men">Men</TabsTrigger>
-          </TabsList>
-          <TabContent
-            featuredLinks={womenFeaturedLinks}
-            links={womenLinks}
-            value="women"
-          />
-          <TabContent
-            featuredLinks={menFeaturedLinks}
-            links={mensLinks}
-            value="men"
-          />
-        </Tabs>
+  <Sheet key={"left"}>
+    <SheetTrigger className="z-50">
+      <OpenMobileMenuButton />
+    </SheetTrigger>
+    <SheetContent className="overflow-y-auto p-0" side={"left"}>
+      <SheetHeader>
+        <SheetTitle className="sr-only">Main Menu</SheetTitle>
+      </SheetHeader>
+      <Tabs className="px-4" defaultValue="women">
+        <TabsList className="grid w-full grid-cols-2">
+          <TabsTrigger value="women">Women</TabsTrigger>
+          <TabsTrigger value="men">Men</TabsTrigger>
+        </TabsList>
+        <TabContent
+          featuredLinks={womenFeaturedLinks}
+          links={womenLinks}
+          value="women"
+        />
+        <TabContent
+          featuredLinks={menFeaturedLinks}
+          links={mensLinks}
+          value="men"
+        />
+      </Tabs>
+      <div className="relative flex  w-full flex-col overflow-y-auto bg-white pb-12 shadow-xl">
         <div className="mt-2"></div>
 
         <div className="space-y-6 border-t border-gray-200 px-4 py-6">
@@ -359,8 +321,8 @@ const MobileNavigationMenu = forwardRef<
           </a>
         </div>
       </div>
-    </div>
-  </div>
+    </SheetContent>
+  </Sheet>
 ));
 MobileNavigationMenu.displayName = "MobileNavigationMenu";
 
@@ -396,7 +358,7 @@ const FlyoutMenus = () => (
       <NavigationMenuItem>
         <NavigationMenuTrigger>Women</NavigationMenuTrigger>
         <NavigationMenuContent>
-          <div className="relative w-[400px] bg-white md:w-[500px] lg:w-[600px]">
+          <div className="relative w-[600px] bg-white md:w-[700px] lg:w-[800px]">
             <div className="mx-auto max-w-7xl px-8">
               <div className="grid grid-cols-2 gap-x-8 gap-y-10 py-6">
                 <div className="col-start-2 grid grid-cols-2 gap-x-8">
@@ -437,7 +399,7 @@ const FlyoutMenus = () => (
       <NavigationMenuItem>
         <NavigationMenuTrigger>Men</NavigationMenuTrigger>
         <NavigationMenuContent>
-          <div className="relative w-[400px] bg-white md:w-[500px] lg:w-[600px]">
+          <div className="relative w-[600px] bg-white md:w-[700px] lg:w-[800px]">
             <div className="mx-auto max-w-7xl px-8">
               <div className="grid grid-cols-2 gap-x-8 gap-y-10 py-6">
                 <div className="col-start-2 grid grid-cols-2 gap-x-8">
@@ -499,11 +461,11 @@ const DesktopNavigationMenu = forwardRef<
     <nav aria-label="Top" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div className="border-b border-gray-200">
         <div className="flex h-16 items-center">
-          <OpenMobileMenuButton />
+          <MobileNavigationMenu />
           <Logo />
 
           {/* <!-- Flyout menus --> */}
-          <div className="hidden border-2 border-red-400 lg:ml-8 lg:block lg:self-stretch">
+          <div className="hidden lg:ml-8 lg:block lg:self-stretch">
             <div className="flex h-full space-x-8">
               <FlyoutMenus />
             </div>
