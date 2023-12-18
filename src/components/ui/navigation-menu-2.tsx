@@ -215,7 +215,7 @@ const MobileNavigationMenu = forwardRef<
                 </div>
               ))}
             </div>
-            {womenMobileLinks.map(({ links, sectionLabel }, index) => (
+            {menMobileLinks.map(({ links, sectionLabel }, index) => (
               <div className="mt-6" key={index}>
                 <p
                   className="font-medium text-gray-900"
