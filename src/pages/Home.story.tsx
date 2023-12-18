@@ -1,5 +1,5 @@
 import { Meta } from "@storybook/react";
-import Home from "./Home";
+import { Home } from "./home";
 
 export default {
   title: "Home",
