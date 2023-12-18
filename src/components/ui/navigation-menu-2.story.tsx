@@ -1,9 +1,18 @@
 import { Meta } from "@storybook/react";
-import { NavigationMenu } from "./navigation-menu-2";
+import {
+  DesktopNavigationMenu,
+  MobileNavigationMenu,
+  NavigationMenu,
+} from "./navigation-menu-2";
 
 export default {
   component: NavigationMenu,
   title: "NavigationMenu2",
 } as Meta;
 
-export const Default = () => <NavigationMenu />;
+export const Default = () => (
+  <NavigationMenu>
+    <MobileNavigationMenu />
+    <DesktopNavigationMenu />
+  </NavigationMenu>
+);
