@@ -57,7 +57,7 @@ export function NavigationMenu3() {
               </a>
             </div>
             <Separator />
-            <ul className="flex w-[250px] flex-col  ">
+            <ul className="flex w-[250px] flex-col">
               {accountLinks.map((component) => (
                 <ListItem {...component} />
               ))}
@@ -74,7 +74,7 @@ export function NavigationMenu3() {
             {Icons.cart()}
           </NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="flex w-[300px] flex-col  ">
+            <ul className="flex w-[250px] flex-col  ">
               {accountLinks.map((component) => (
                 <ListItem {...component} />
               ))}
