@@ -4,7 +4,7 @@ import { Input } from "./input";
 export const Newsletter = () => {
   return (
     // <!-- Newsletter Signup Section -->
-    <section className="mt-6 border border-b-0 border-l-0 border-r-0 bg-background p-24">
+    <section className="mt-6 bg-background p-24">
       <div className="container mx-auto text-center">
         <h2 className="mb-2 text-2xl font-bold">Stay Updated!</h2>
         <p className="mb-4">
