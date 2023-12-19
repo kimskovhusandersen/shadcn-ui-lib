@@ -32,6 +32,7 @@ import {
 } from "lucide-react";
 
 export default {
+  title: "Components/DropdownMenu",
   component: DropdownMenu,
   subcomponents: {
     DropdownMenuContent,
