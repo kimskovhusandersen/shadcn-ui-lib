@@ -1,9 +1,6 @@
 import { cn } from "@/lib/utils";
 import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
 import { forwardRef } from "react";
-import { AccountButton } from "./account-button";
-import { Cart } from "./cart";
-import { LanguageButton } from "./language-button";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -13,7 +10,7 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "./navigation-menu";
-import { SearchButton } from "./search-button";
+import { NavigationMenu3 } from "./navigation-menu-3";
 import {
   Sheet,
   SheetContent,
@@ -491,14 +488,8 @@ const DesktopNavigationMenu = forwardRef<
                 Create account
               </a>
             </div>
-
             <div className="flex space-x-1 lg:ml-6">
-              <div className="hidden lg:ml-8 lg:flex">
-                <LanguageButton />
-              </div>
-              <SearchButton />
-              <AccountButton />
-              <Cart />
+              <NavigationMenu3 />
             </div>
           </div>
         </div>
