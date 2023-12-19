@@ -2,7 +2,7 @@ import { Meta } from "@storybook/react";
 import { AccountForm } from "./account-form";
 
 export default {
-  title: "Components/AccountForm",
+  title: "Forms/AccountForm",
   component: AccountForm,
 } as Meta;
 
