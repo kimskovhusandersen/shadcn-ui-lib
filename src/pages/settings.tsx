@@ -1,6 +1,6 @@
-import SettingsAccount from "./settings-account";
-import SettingsLayout from "./settings-layout";
-import { SettingsProfile } from "./settings-profile";
+import SettingsAccount from "../components/ui/settings-account";
+import SettingsLayout from "../components/ui/settings-layout";
+import { SettingsProfile } from "../components/ui/settings-profile";
 
 export default function Settings() {
   return (
