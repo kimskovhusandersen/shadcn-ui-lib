@@ -1,3 +1,16 @@
+const socialLinks = [
+  { label: "Facebook", href: "#" },
+  { label: "Twitter", href: "#" },
+  { label: "Instagram", href: "#" },
+];
+
+const serviceLinks = [
+  { label: "Contact Us", href: "#" },
+  { label: "Returns", href: "#" },
+  { label: "Site Map", href: "#" },
+  { label: "FAQ", href: "#" },
+];
+
 export const Footer = () => {
   return (
     <footer className="bg-gray-800 p-24 text-white">
@@ -23,42 +36,33 @@ export const Footer = () => {
         <div>
           <h3 className="text-md font-bold">Customer Service</h3>
           <ul className="mt-4 space-y-2">
-            <li>
-              <a className="text-sm text-gray-400 hover:text-white" href="#">
-                Contact Us
-              </a>
-            </li>
-            <li>
-              <a className="text-sm text-gray-400 hover:text-white" href="#">
-                Returns
-              </a>
-            </li>
-            <li>
-              <a className="text-sm text-gray-400 hover:text-white" href="#">
-                Site Map
-              </a>
-            </li>
-            <li>
-              <a className="text-sm text-gray-400 hover:text-white" href="#">
-                FAQ
-              </a>
-            </li>
+            {serviceLinks.map(({ href, label }) => (
+              <li key={label}>
+                <a
+                  className="text-sm text-gray-400 hover:text-white"
+                  href={href}
+                >
+                  {label}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
 
         {/* <!-- Social Media --> */}
         <div>
           <h3 className="text-md font-bold">Follow Us</h3>
-          <div className="flex space-x-2">
-            <a className="text-sm text-gray-400 hover:text-white" href="#">
-              Facebook
-            </a>
-            <a className="text-sm text-gray-400 hover:text-white" href="#">
-              Twitter
-            </a>
-            <a className="text-sm text-gray-400 hover:text-white" href="#">
-              Instagram
-            </a>
+          <div className="mt-4 flex space-x-2">
+            {socialLinks.map(({ href, label }) => (
+              <li key={label}>
+                <a
+                  className="text-sm text-gray-400 hover:text-white"
+                  href={href}
+                >
+                  {label}
+                </a>
+              </li>
+            ))}
           </div>
         </div>
 
