@@ -4,6 +4,7 @@ import {
   DesktopNavigationMenu,
   NavigationMenu,
 } from "@/components/ui/navigation-menu-2";
+import { Newsletter } from "@/components/ui/newsletter";
 
 export function Category() {
   return (
@@ -12,6 +13,7 @@ export function Category() {
         <DesktopNavigationMenu />
       </NavigationMenu>
       <Filters />
+      <Newsletter />
       <Footer />
     </>
   );

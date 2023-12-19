@@ -1,6 +1,6 @@
 export const Footer = () => {
   return (
-    <footer className="bg-gray-800 p-8 text-white">
+    <footer className="bg-gray-800 p-24 text-white">
       <div className="container mx-auto grid grid-cols-1 gap-4 md:grid-cols-4">
         {/* <!-- Company Info --> */}
         <div>
@@ -58,19 +58,7 @@ export const Footer = () => {
         </div>
 
         {/* <!-- Newsletter Signup --> */}
-        <div>
-          <h2 className="mb-2 text-lg font-bold">Newsletter</h2>
-          <form action="#">
-            <input
-              className="w-full p-2 text-gray-700"
-              placeholder="Your email address"
-              type="email"
-            />
-            <button className="mt-2 w-full bg-blue-600 px-4 py-2 font-bold text-white hover:bg-blue-700">
-              Subscribe
-            </button>
-          </form>
-        </div>
+        <div></div>
       </div>
     </footer>
   );

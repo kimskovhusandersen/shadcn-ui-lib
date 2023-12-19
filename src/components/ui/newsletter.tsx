@@ -1,7 +1,10 @@
+import { Button } from "./button";
+import { Input } from "./input";
+
 export const Newsletter = () => {
   return (
     // <!-- Newsletter Signup Section -->
-    <section className="mt-6 bg-gray-100 p-6">
+    <section className="mt-6 border border-b-0 border-l-0 border-r-0 bg-background p-24">
       <div className="container mx-auto text-center">
         <h2 className="mb-2 text-2xl font-bold">Stay Updated!</h2>
         <p className="mb-4">
@@ -12,18 +15,15 @@ export const Newsletter = () => {
           className="flex items-center justify-center"
           method="POST"
         >
-          <input
-            className="w-1/3 rounded-l-lg border border-gray-300 p-2 focus:border-blue-500 focus:outline-none"
+          <Input
+            className="w-1/3 rounded-r-none border border-gray-300 p-2"
             name="email"
             placeholder="Enter your email"
             type="email"
           />
-          <button
-            className="rounded-r-lg bg-blue-500 p-2 font-bold text-white hover:bg-blue-600"
-            type="submit"
-          >
+          <Button className="rounded-l-none font-bold" size="lg">
             Subscribe
-          </button>
+          </Button>
         </form>
       </div>
     </section>
