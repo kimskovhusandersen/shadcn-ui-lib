@@ -1,7 +1,9 @@
 import { cn } from "@/lib/utils";
 import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
 import { forwardRef } from "react";
+import { AccountButton } from "./account-button";
 import { Cart } from "./cart";
+import { LanguageButton } from "./language-button";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -11,6 +13,7 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "./navigation-menu";
+import { SearchButton } from "./search-button";
 import {
   Sheet,
   SheetContent,
@@ -489,44 +492,12 @@ const DesktopNavigationMenu = forwardRef<
               </a>
             </div>
 
-            <div className="hidden lg:ml-8 lg:flex">
-              <a
-                className="flex items-center text-gray-700 hover:text-gray-800"
-                href="#"
-              >
-                <img
-                  alt=""
-                  className="block h-auto w-5 flex-shrink-0"
-                  src="https://tailwindui.com/img/flags/flag-canada.svg"
-                />
-                <span className="ml-3 block text-sm font-medium">CAD</span>
-                <span className="sr-only">, change currency</span>
-              </a>
-            </div>
-
-            {/* <!-- Search --> */}
-            <div className="flex lg:ml-6">
-              <a className="p-2 text-gray-400 hover:text-gray-500" href="#">
-                <span className="sr-only">Search</span>
-                <svg
-                  aria-hidden="true"
-                  className="h-6 w-6"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </a>
-            </div>
-
-            {/* <!-- Cart --> */}
-            <div className="ml-4 flow-root lg:ml-6">
+            <div className="flex space-x-1 lg:ml-6">
+              <div className="hidden lg:ml-8 lg:flex">
+                <LanguageButton />
+              </div>
+              <SearchButton />
+              <AccountButton />
               <Cart />
             </div>
           </div>

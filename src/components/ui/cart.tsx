@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import {
   Sheet,
   SheetContent,
@@ -10,7 +11,11 @@ export const Cart = () => {
   return (
     <Sheet key={"right"}>
       <SheetTrigger className="z-50">
-        <button className="group -m-2 flex items-center p-2">
+        <Button
+          className="rounded-full border-none"
+          size="icon"
+          variant="outline"
+        >
           <svg
             aria-hidden="true"
             className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
@@ -25,11 +30,8 @@ export const Cart = () => {
               stroke-linejoin="round"
             />
           </svg>
-          <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
-            0
-          </span>
           <span className="sr-only">items in cart, view bag</span>
-        </button>
+        </Button>
       </SheetTrigger>
       <SheetContent className="overflow-y-auto p-0" side={"right"}>
         <SheetHeader>
