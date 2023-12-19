@@ -193,9 +193,9 @@ export const Filters = () => {
       <div>
         <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-24">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900">
+            <h2 className="text-4xl font-bold tracking-tight text-gray-900">
               New Arrivals
-            </h1>
+            </h2>
 
             <div className="flex items-center">
               <div className="relative inline-block text-left">
@@ -376,7 +376,7 @@ export const Filters = () => {
                   Black T-Shirts
                 </h2>
 
-                <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+                <div className="mt-6 grid grid-cols-2 gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                   {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].map(
                     () => (
                       <div className="group relative">

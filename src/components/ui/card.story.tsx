@@ -6,6 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import { Meta } from "@storybook/react";
 import { Button } from "./button";
 
@@ -39,15 +40,18 @@ export function CardWithForm() {
 
 export function ProductCard() {
   return (
-    <Card className="group relative max-w-[350px] hover:drop-shadow-lg">
-      <CardHeader className="p-2">
-        <div className="aspect-h-1 aspect-w-1 lg:aspect-none w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-80">
+    <Card className="group relative rounded-none border-none hover:drop-shadow-lg">
+      <CardHeader className="p-0">
+        <AspectRatio
+          className="bg-gray-200 group-hover:opacity-75"
+          ratio={3 / 4}
+        >
           <img
             alt="Front of men&#039;s Basic Tee in black."
-            className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+            className="h-full w-full object-cover object-center"
             src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg"
           />
-        </div>
+        </AspectRatio>
       </CardHeader>
       <div className="flex justify-between p-6">
         <div>

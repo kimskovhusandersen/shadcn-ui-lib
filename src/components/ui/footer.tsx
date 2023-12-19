@@ -1,3 +1,5 @@
+import { Fragment } from "react";
+
 const socialLinks = [
   { label: "Facebook", href: "#" },
   { label: "Twitter", href: "#" },
@@ -10,10 +12,16 @@ const serviceLinks = [
   { label: "Site Map", href: "#" },
   { label: "FAQ", href: "#" },
 ];
+const legalLinks = [
+  { label: "Privacy Policy", href: "#" },
+  { label: "Terms of Service", href: "#" },
+  { label: "CA Supply Chains Act", href: "#" },
+  { label: "Do Not Sell My Information", href: "#" },
+];
 
 export const Footer = () => {
   return (
-    <footer className="bg-gray-800 p-24 text-white">
+    <footer className="space-y-12 bg-gray-800 p-12 pb-3 text-white">
       <div className="container mx-auto grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {/* <!-- Company Info --> */}
         <div>
@@ -52,7 +60,7 @@ export const Footer = () => {
         {/* <!-- Social Media --> */}
         <div>
           <h3 className="text-md font-bold">Follow Us</h3>
-          <div className="mt-4 flex space-x-2">
+          <ul className="mt-4 space-y-2">
             {socialLinks.map(({ href, label }) => (
               <li key={label}>
                 <a
@@ -63,11 +71,36 @@ export const Footer = () => {
                 </a>
               </li>
             ))}
-          </div>
+          </ul>
         </div>
 
         {/* <!-- Newsletter Signup --> */}
         <div></div>
+      </div>
+      <div className="mt-8 flex justify-between align-bottom">
+        <p className="text-xs text-gray-400">
+          &copy; {new Date().getFullYear()} E-commerce, Inc. All rights
+          reserved.
+        </p>
+        <ul className="flex space-x-3">
+          {legalLinks.map(({ href, label }, index) => {
+            const isLast = index === legalLinks.length - 1;
+            return (
+              <Fragment key={label}>
+                <li>
+                  <p className="text-xs text-gray-400">
+                    <a
+                      className="text-xs text-gray-400 hover:text-white"
+                      href={href}
+                    >
+                      {label}
+                    </a>
+                  </p>
+                </li>
+              </Fragment>
+            );
+          })}
+        </ul>
       </div>
     </footer>
   );
