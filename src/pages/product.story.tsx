@@ -3,7 +3,7 @@ import { Product } from "./product";
 
 export default {
   component: Product,
-  title: "Components/Product",
+  title: "Pages/Product",
 } as Meta;
 
 export const Default = () => <Product />;
