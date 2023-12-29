@@ -1,4 +1,3 @@
-import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Separator } from "@/components/ui/separator";
 import { SidebarNav } from "@/components/ui/sidebar-nav";
 
@@ -25,23 +24,7 @@ interface SettingsLayoutProps {
 export default function SettingsLayout({ children }: SettingsLayoutProps) {
   return (
     <>
-      <div className="md:hidden">
-        <AspectRatio ratio={1280 / 791}>
-          <img
-            alt="Forms"
-            className="block h-full w-full dark:hidden"
-            src="/examples/forms-light.png"
-          />
-        </AspectRatio>
-        <AspectRatio ratio={1280 / 791}>
-          <img
-            alt="Forms"
-            className="hidden h-full w-full dark:block"
-            src="/examples/forms-dark.png"
-          />
-        </AspectRatio>
-      </div>
-      <div className="hidden space-y-6 p-10 pb-16 md:block">
+      <div className="space-y-6 p-10 pb-16">
         <div className="space-y-0.5">
           <h2 className="text-2xl font-bold tracking-tight">Settings</h2>
           <p className="text-muted-foreground">
