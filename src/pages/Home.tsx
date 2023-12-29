@@ -1,19 +1,11 @@
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { ProductCard } from "@/components/ui/card.story";
-import { Footer } from "@/components/ui/footer";
-import {
-  DesktopNavigationMenu,
-  NavigationMenu,
-} from "@/components/ui/navigation-menu-2";
 import { Newsletter } from "@/components/ui/newsletter";
+import { Layout } from "./layout";
 
 export function Home() {
   return (
-    <>
-      <NavigationMenu>
-        <DesktopNavigationMenu />
-      </NavigationMenu>
-
+    <Layout>
       <AspectRatio className="border" ratio={16 / 8}>
         <img
           alt=""
@@ -59,7 +51,6 @@ export function Home() {
         ))}
       </div>
       <Newsletter />
-      <Footer />
-    </>
+    </Layout>
   );
 }

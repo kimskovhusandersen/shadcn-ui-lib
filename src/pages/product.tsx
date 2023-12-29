@@ -1,20 +1,12 @@
-import { Footer } from "@/components/ui/footer";
-import {
-  DesktopNavigationMenu,
-  NavigationMenu,
-} from "@/components/ui/navigation-menu-2";
 import { Newsletter } from "@/components/ui/newsletter";
 import { ProductOverview } from "@/components/ui/product-overview";
+import { Layout } from "./layout";
 
 export const Product = () => {
   return (
-    <>
-      <NavigationMenu>
-        <DesktopNavigationMenu />
-      </NavigationMenu>
+    <Layout>
       <ProductOverview />
       <Newsletter />
-      <Footer />
-    </>
+    </Layout>
   );
 };
