@@ -30,7 +30,7 @@ const accountLinks = [
   },
 ];
 
-export function NavigationMenu3() {
+export function HeaderMenu() {
   return (
     <NavigationMenu anchor="right">
       <NavigationMenuList>

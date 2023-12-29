@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import { forwardRef } from "react";
+import { HeaderMenu } from "./header-menu";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -9,7 +10,6 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "./navigation-menu";
-import { NavigationMenu3 } from "./navigation-menu-3";
 import {
   Sheet,
   SheetContent,
@@ -468,7 +468,7 @@ function DesktopNavigationMenu() {
 
             <div className="ml-auto flex items-center">
               <div className="flex space-x-1 lg:ml-6">
-                <NavigationMenu3 />
+                <HeaderMenu />
               </div>
             </div>
           </div>
