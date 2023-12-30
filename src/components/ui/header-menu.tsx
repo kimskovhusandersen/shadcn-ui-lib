@@ -82,7 +82,9 @@ export function HeaderMenu() {
                 <CartItem {...item} />
               ))}
             </ul>
-            <CartSummary subtotal={"$122.00"} />
+            <CartSummary
+              subtotalAmount={{ amount: "122", currencyCode: "EUR" }}
+            />
           </NavigationMenuContent>
         </NavigationMenuItem>
       </NavigationMenuList>
