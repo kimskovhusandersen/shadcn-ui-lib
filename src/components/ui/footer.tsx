@@ -1,4 +1,17 @@
-import { Fragment } from "react";
+import { VariantProps, tv } from "tailwind-variants";
+
+const footerLinkVariant = tv({
+  base: "text-gray-400 hover:text-white",
+  variants: {
+    size: {
+      xs: "text-xs",
+      sm: "text-sm",
+    },
+  },
+  defaultVariants: {
+    size: "sm",
+  },
+});
 
 const socialLinks = [
   { label: "Facebook", href: "#" },
@@ -18,6 +31,24 @@ const legalLinks = [
   { label: "CA Supply Chains Act", href: "#" },
   { label: "Do Not Sell My Information", href: "#" },
 ];
+
+interface FooterLinkProps extends VariantProps<typeof footerLinkVariant> {
+  className?: string;
+  item: { id: string; title: string; url: string };
+}
+
+function FooterLink({ className, item, size }: FooterLinkProps) {
+  return (
+    <li key={item.id}>
+      <a
+        className={footerLinkVariant({ className, size })}
+        href={item.url as string}
+      >
+        {item.title}
+      </a>
+    </li>
+  );
+}
 
 export const Footer = () => {
   return (
@@ -45,14 +76,7 @@ export const Footer = () => {
           <h3 className="text-md font-bold">Customer Service</h3>
           <ul className="mt-4 space-y-2">
             {serviceLinks.map(({ href, label }) => (
-              <li key={label}>
-                <a
-                  className="text-sm text-gray-400 hover:text-white"
-                  href={href}
-                >
-                  {label}
-                </a>
-              </li>
+              <FooterLink item={{ id: label, title: label, url: href }} />
             ))}
           </ul>
         </div>
@@ -62,14 +86,7 @@ export const Footer = () => {
           <h3 className="text-md font-bold">Follow Us</h3>
           <ul className="mt-4 space-y-2">
             {socialLinks.map(({ href, label }) => (
-              <li key={label}>
-                <a
-                  className="text-sm text-gray-400 hover:text-white"
-                  href={href}
-                >
-                  {label}
-                </a>
-              </li>
+              <FooterLink item={{ id: label, title: label, url: href }} />
             ))}
           </ul>
         </div>
@@ -82,24 +99,14 @@ export const Footer = () => {
           &copy; {new Date().getFullYear()} E-commerce, Inc. All rights
           reserved.
         </p>
+        {/* <!-- Legal --> */}
         <ul className="flex space-x-3">
-          {legalLinks.map(({ href, label }, index) => {
-            const isLast = index === legalLinks.length - 1;
-            return (
-              <Fragment key={label}>
-                <li>
-                  <p className="text-xs text-gray-400">
-                    <a
-                      className="text-xs text-gray-400 hover:text-white"
-                      href={href}
-                    >
-                      {label}
-                    </a>
-                  </p>
-                </li>
-              </Fragment>
-            );
-          })}
+          {legalLinks.map(({ href, label }, index) => (
+            <FooterLink
+              item={{ id: label, title: label, url: href }}
+              size="xs"
+            />
+          ))}
         </ul>
       </div>
     </footer>

@@ -6,4 +6,8 @@ export default {
   title: "Components/HeaderMenu",
 } as Meta;
 
-export const Default = () => <HeaderMenu />;
+export const Default = () => (
+  <div className="flex w-full justify-end">
+    <HeaderMenu />
+  </div>
+);

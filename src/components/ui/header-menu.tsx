@@ -9,6 +9,9 @@ import {
 import { cn } from "@/lib/utils";
 import { forwardRef } from "react";
 import { buttonVariants } from "./button";
+import { cartItems } from "./cart";
+import { CartItem } from "./cart-item";
+import { CartSummary } from "./cart-summary";
 import { Icons } from "./icons";
 import { Separator } from "./separator";
 
@@ -73,12 +76,13 @@ export function HeaderMenu() {
           <NavigationMenuTrigger className="h-10 w-10 rounded-full p-0">
             {Icons.cart()}
           </NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="flex w-[250px] flex-col  ">
-              {accountLinks.map((component) => (
-                <ListItem {...component} />
+          <NavigationMenuContent className="w-full max-w-[300px]">
+            <ul className="flex flex-col divide-y divide-gray-200 px-2">
+              {cartItems.map((item) => (
+                <CartItem {...item} />
               ))}
             </ul>
+            <CartSummary subtotal={"$122.00"} />
           </NavigationMenuContent>
         </NavigationMenuItem>
       </NavigationMenuList>
