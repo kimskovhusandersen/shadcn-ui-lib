@@ -13,6 +13,7 @@ import { cartItems } from "./cart";
 import { CartItem } from "./cart-item";
 import { CartSummary } from "./cart-summary";
 import { Icons } from "./icons";
+import { ScrollArea } from "./scroll-area";
 import { Separator } from "./separator";
 
 const accountLinks = [
@@ -76,12 +77,18 @@ export function HeaderMenu() {
           <NavigationMenuTrigger className="h-10 w-10 rounded-full p-0">
             {Icons.cart()}
           </NavigationMenuTrigger>
-          <NavigationMenuContent className="w-full max-w-[300px]">
-            <ul className="flex flex-col divide-y divide-gray-200 px-2">
-              {cartItems.map((item) => (
-                <CartItem {...item} />
-              ))}
-            </ul>
+          <NavigationMenuContent className="w-full min-w-[300px]">
+            <ScrollArea className="flex max-h-[500px] flex-col divide-y divide-gray-200 overflow-y-auto px-2">
+              {cartItems.length === 0 ? (
+                <p className="p-4">No items</p>
+              ) : (
+                <ul className="p-4">
+                  {cartItems.map((line) => (
+                    <CartItem {...line} />
+                  ))}
+                </ul>
+              )}
+            </ScrollArea>
             <CartSummary
               subtotalAmount={{ amount: "122", currencyCode: "EUR" }}
             />
